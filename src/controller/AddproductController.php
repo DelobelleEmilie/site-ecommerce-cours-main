@@ -34,10 +34,8 @@ function addProductController($twig, $db)
     }
   }
 }
-
-function error($db,$twig)
+function Modification ($db,$twig,$form)
 {
-  error_reporting(E_ALL);
-  ini_set("display_errors", 1);
+    if (isset($_POST['btnPostProduct']))
+        echo $twig->render('form_product.html.twig', ['form' => $form, 'page' => '?page=addProduct']);
 }
-?>
