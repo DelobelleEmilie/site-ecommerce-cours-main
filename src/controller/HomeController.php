@@ -5,8 +5,9 @@ function homeController($twig, $db)
 {
 $products=getAllProduct($db);
 
-var_dump($products);
-  echo $twig->render('home.html.twig', []);
+  echo $twig->render('home.html.twig', [
+      'products' => $products
+  ]);
 }
 
 ?> 
