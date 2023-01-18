@@ -31,7 +31,8 @@ function addProductController($twig, $db)
           #la variable «$form» est complétéeavec des informations que nous pourrons réutiliser dans la vue Twig.
           echo $twig->render('form_addproduct.html.twig', [
               #la variable «$form» est passée à lavue Twig sous le nom «form»
-              'form' => $form
+              'form' => $form,
+              'page'=>"?page=addProduct"
           ]);
 #sinon le produit est sauvergardée
       } else {
@@ -40,8 +41,8 @@ function addProductController($twig, $db)
           ];
           #la variable «$form» est complétéeavec des informations que nous pourrons réutiliser dans la vue Twig.
           echo $twig->render('form_addproduct.html.twig', [
-              'form' => $form
-
+              'form' => $form,
+          'page'=>"?page=addProduct"
           ]);
       }
 

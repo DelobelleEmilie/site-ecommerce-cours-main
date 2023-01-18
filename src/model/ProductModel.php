@@ -31,8 +31,10 @@ function saveProduct($db, $label, $description, $price, $category)
 
     function updateOneProduct($db,$id,$label,$description,$price,$category)
     {
+        # mettre à jour une la base de donnée
         $query = $db->prepare("UPDATE shop_product SET label=:label, `description`=:desc,price=:price,idCategory=:$category WHERE id=:id");
         return $query->execute([
+            #La requête est constituée de valeurs dynamiques. Ces valeurs seront remplacées par les variables que nous lui passerons en paramètre
             'id'=> $id,
             'label' => $label,
             'descr' => $description,
