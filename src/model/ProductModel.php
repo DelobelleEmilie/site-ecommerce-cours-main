@@ -1,22 +1,5 @@
 <?php
 
-#la fonction pour un seul produit
-function getOneProduct($db, $idProduct) 
-{
-#la fonction query combine à la fois l'exécution de la requête et la mise en mémoire tampon du jeu de résultats
-/*query = db qui prepare la selection de l'id, le label,...
-qui provienne de la classse shop ou la cle primare est id et est défini par where*/
-    $query = $db->prepare("SELECT id, label, `description`, price, idCategory FROM shop_product WHERE id=:id");
-   
-    #injecte la valeur de $idProduct, à la place de ':id'
-    $query->execute([
-        'id'=>$idProduct
-    ]);
-/* On récupères le premier résultat de la requete et stocker le resultat dans la variable product et retourner le resultat*/
-    $product=$query->fetch();
-#
-    
-}
 
 #la fonction pour tout les produits
 function getallProduct($db)

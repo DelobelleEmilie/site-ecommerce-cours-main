@@ -1,0 +1,13 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+    Bienvenue sur le Shop !
+{% endblock %}
+
+{% block content %}
+
+<form action="{{ page }}" method="POST">
+    <div class="nb-3"></div>
+    <select class="form-select" name="Categorie"></select>
+    </div>
+    <button type="submit" class="btn btn-primary" name="btnAddCategory">Ajouter</button>
+    {% endblock %}

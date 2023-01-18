@@ -7,14 +7,16 @@
 {% block content %}
 
 <form action="{{ page }}" method="POST">
-    <div class="nb-3"></div>
-    <select class="form-select" name="productCategory"></select>
-    <option value="18">Carte graphique</option>
-    <option value="19">Disque dur</option>
-    </div>
-    <button type="submit" class="btn btn-primary" name="btnAddProduct">Ajouter</button>
 
-    <form action="index.php?page=addProduct" method="POST">
+    <div class="nb-3">
+        <label for="category" class="form-label">Catégorie</label>
+        <select class="form-select" name="category" id="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == entity.idCategory %} selected {% endif %}>{{ category.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
 <div class="nb-3">
 <label for="productLabel" class="form-label">Libellé</label>
 <input type="text" class="form-control" id="productLabel" name="productLabel"></intput>
