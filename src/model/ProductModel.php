@@ -43,3 +43,15 @@ function saveProduct($db, $label, $description, $price, $category)
         ]);
     }
 }
+
+function deleteOneProduct($db, $id)
+{$query = $db->prepare("DELETE FROM shopcourse_products WHERE id=:id");
+    $query->execute(['id' => $id]);
+    if ($query->rowCount() > 0)
+    {
+        $result = true;
+    }
+    else
+    {$result = false;
+    }
+    return $result;}
