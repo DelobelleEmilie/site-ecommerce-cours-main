@@ -5,35 +5,77 @@
 {% endblock %}
 
 {% block content %}
+    {% if controller == 'add' %}
+        <form action="{{ page }}" method="POST">
 
-<form action="{{ page }}" method="POST">
+            <div class="nb-3">
+                <label for="category" class="form-label">Catégorie</label>
+                <select class="form-select" name="category" id="category">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == entity.idCategory %} selected {% endif %}>{{ category.label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-    <div class="nb-3">
-        <label for="category" class="form-label">Catégorie</label>
-        <select class="form-select" name="category" id="category">
-            {% for category in categories %}
-                <option value="{{ category.id }}" {% if category.id == entity.idCategory %} selected {% endif %}>{{ category.label }}</option>
-            {% endfor %}
-        </select>
-    </div>
+            <div class="nb-3">
+                <label for="productLabel" class="form-label">Libellé</label>
+                <input type="text" class="form-control" id="productLabel" name="productLabel"></intput>
+            </div>
+        </form>
 
-<div class="nb-3">
-<label for="productLabel" class="form-label">Libellé</label>
-<input type="text" class="form-control" id="productLabel" name="productLabel"></intput>
-</div>
-</form>
+        <div class="nb-3">
+            <label for="productDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="productDescription"></textarea>
+            <input type="text" class="form-control" id="productLabel" name="productDescription" rows="3"></intput>
+        </div>
+        <div class="nb-3">
+            <label for="productPrice" class="form-label">Prix</label>
+            <textarea class="form-control" id="productDescription"></textarea>
+            <input type="number" class="form-control" id="productPrice" name="productPrice"></intput>
+        </div>
+        </form>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    {% elseif controller == 'update' %}
+        <form action="{{ page }}" method="POST">
 
-<div class="nb-3">
-<label for="productDescription" class="form-label">Description</label>
-<textarea class="form-control" id="productDescription"></textarea>
-<input type="text" class="form-control" id="productLabel" name="productDescription" rows="3"></intput>
-</div>
-<div class="nb-3">
-<label for="productPrice" class="form-label">Prix</label>
-<textarea class="form-control" id="productDescription"></textarea>
-<input type="number" class="form-control" id="productPrice" name="productPrice"></intput>
-</div>
-</form>
+            <div class="nb-3">
+                <label for="category" class="form-label">Catégorie</label>
+                <select class="form-select" name="category" id="category">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == entity.idCategory %} selected {% endif %}>{{ category.label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="nb-3">
+                <label for="productLabel" class="form-label">Libellé</label>
+                <input type="text" class="form-control" id="productLabel" name="productLabel"></intput>
+            </div>
+        </form>
+
+        <div class="nb-3">
+            <label for="productDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="productDescription"></textarea>
+            <input type="text" class="form-control" id="productLabel" name="productDescription" rows="3"></intput>
+        </div>
+        <div class="nb-3">
+            <label for="productPrice" class="form-label">Prix</label>
+            <textarea class="form-control" id="productDescription"></textarea>
+            <input type="number" class="form-control" id="productPrice" name="productPrice"></intput>
+        </div>
+        </form>
+
+        <button type="submit" class="btn btn-primary">
+            #vérifier la valeur de la variable controller. Selon la valeur de cette variable, une étiquette différente sera insérée dans le bouton.
+            {% switch controller %}
+            {% case 'add' %}
+                Ajouter
+            {% case 'update' %}
+                Modifier
+            {% endswitch %}
+        </button>
+    {% endif %}
+
 
 {% endblock %}  
 

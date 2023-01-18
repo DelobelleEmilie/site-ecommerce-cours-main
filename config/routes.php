@@ -8,6 +8,7 @@ $routes =
 'mentionslegales' => "mentionslegalesController",
 'pageconnexion'=> "pageconnexionController",
 'addproduct'=>"addproductController",
-     'addCategory' => "addCategoryController"
+     'addCategory' => "addCategoryController",
+     'showProduct' => "showProductController"
 ];
 

@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+    Fichede produit{% endblock %}
+
+{% block content %}
+    <div class="container">
+        #Se charge ici de vérifier que la valeur de la variable passée dans le contrôleur n’est pas «null» ni égale à «false».
+        #Dans ce cas les informations du produit peuvent être affichées
+        #Dans le cas où la variable «product» est «null» ou égale à «false», un message indique que le produit n’existe pas.
+    {% if product %}
+        <div class="col-12"><h1 class="mb-5">{{ product.label }}</h1></div>
+        <div class="row">
+        <div class="col-md-4">
+            <div class="card p-2"><img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="..."></div>
+        </div>
+        <div class="col-md-5 text-secondary"><p>{{ product.description }}</p></div>
+        <div class="col-md-3 bg-light text-center p-5"><h5 class="h1 text-primary">{{ product.price }} €</h5></div>
+        </div>{% else %}<p>Aucun produit n'est défini !</p>
+    {% endif %}
+    </div>
+{% endblock %}
