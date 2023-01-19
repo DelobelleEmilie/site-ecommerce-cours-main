@@ -20,9 +20,16 @@
         <div class="col-md-4">
             <div class="card p-2"><img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="..."></div>
         </div>
+
+
         <div class="col-md-5 text-secondary"><p>{{ product.description }}</p></div>
         <div class="col-md-3 bg-light text-center p-5"><h5 class="h1 text-primary">{{ product.price }} €</h5></div>
-        </div>{% else %}<p>Aucun produit n'est défini !</p>
+        </div>{% else %}
+        <p>Aucun produit n'est défini !</p>
     {% endif %}
     </div>
+<li> <button type="button" class="btn btn-primary"><a>href=http://site-ecommeerce-cours/?page=addproduct</a>Ajouter</button></li>
+<li><button type="button" class="btn btn-secondary"<a>href=http://site-ecommeerce-cours/</a>>Retour au menu</button>
+</li>
+<li><button type="button" class="btn btn-danger"><a>href=http://site-ecommeerce-cours/?page=deleteproduct</a>Supprimer</button></li>
 {% endblock %}
