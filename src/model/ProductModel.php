@@ -32,13 +32,14 @@ function saveProduct($db, $label, $description, $price, $category, $image)
     #la fonction query combine à la fois l'exécution de la requête et la mise en mémoire tampon du jeu de résultats
 /*query = db qui prepare l'insersertion des données dans la base shop_product*/
 # value = valeur de label, descr,...
-    $query = $db->prepare("INSERT INTO shop_product (label, 'description', price, idCategory,image)VALUE(:label, :descr, :price, :idCategory,:image )");
+    $query = $db->prepare("INSERT INTO shop_product (label, description, price, idCategory, image) VALUES (:label, :descr, :price, :idCategory, :image )");
    #retourne le résultat et implanter des routes pour les données
+
     return $query->execute([
         'label' => $label,
         'descr' => $description,
         'price' => $price,
-        'category' => $category,
+        'idCategory' => $category,
         'image' => $image
     ]);
 }

@@ -6,7 +6,7 @@ include_once '../src/service/upload.php';
 
 
 #Si on saisis le formulaire $_POST contient les données ducoup les produit s'enregistre et raffiche le formulaire vide
-function addProductController($twig, $db,$msg)
+function addProductController($twig, $db)
 {
     $categories = getallCategory($db);
 
@@ -23,7 +23,8 @@ function addProductController($twig, $db,$msg)
     #Une variable «$form» est créée et définie en tant que tableau vide «[]»
     $form = [];
 
-    if (isset($_POST['btnAddProduct'])) {
+    if (!empty($_POST)) {
+
         $label = htmlspecialchars($_POST['productLabel']);
         $description = htmlspecialchars($_POST['productDescription']);
         $price = htmlspecialchars($_POST['productPrice']);
