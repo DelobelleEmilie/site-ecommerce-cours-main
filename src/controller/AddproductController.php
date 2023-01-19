@@ -45,7 +45,7 @@ function addProductController($twig, $db)
                   # permet de couper la chaine de caractères à chaque fois qu’un point sera présent.
                   $file_name = $file_name . '.' .
                       $file_upload[count($file_upload) -1];
-                  $file_path = $uploads['path'] . $file_name
+                  $file_path = $uploads['path'] . $file_name;
                       #’instruction de la condition s’attarde à vérifier qu’un fichier ayant le même nom n’existe pas.
                   #Si aucun fichier du même nom n’est trouvé, l’envoi de fichier est autorisé à continuer
                   #Si toutes les conditionssont vérifiées,le déplacement du fichier vers ledossier «uploads» situé dans le dossier «public» est autorisé. Le déplacement s’effectue
@@ -62,35 +62,35 @@ function addProductController($twig, $db)
           }}
                   }
               }
-              if (empty($label) || empty($description) || empty($category)) {
-                {
-                  #la variable «$form» se constitue d’une clé «state» pour définir l’état du formulaire.
-                  #Le tableau est aussi constitué d’une clé «message» danslaquelle nous renseignerons un message personnalisé pour informer l’utilisateur
-                  $form = [
-                      'state' => 'danger',
-                      'message' => [$msg]
- 
-                  ];
-                  saveProduct($db, $label, $description, $price, $category, $file_name);
+              if (empty($label) || empty($description) || empty($category) || empty($price) || empty($db) || empty($file_name) ||empty($msg)) {
+                  {
+                      #la variable «$form» se constitue d’une clé «state» pour définir l’état du formulaire.
+                      #Le tableau est aussi constitué d’une clé «message» danslaquelle nous renseignerons un message personnalisé pour informer l’utilisateur
+                      $form = [
+                          'state' => 'danger',
+                          'message' => [$msg]
 
-                  #la variable «$form» est complétéeavec des informations que nous pourrons réutiliser dans la vue Twig.
-                  echo $twig->render('form_addproduct.html.twig', [
-                      #la variable «$form» est passée à la vue Twig sous le nom «form»
-                      'form' => $form,
-                      'page'=>"?page=addProduct"
-                  ]);
+                      ];
+                      saveProduct($db, $label, $description, $price, $category, $file_name);
+
+                      #la variable «$form» est complétéeavec des informations que nous pourrons réutiliser dans la vue Twig.
+                      echo $twig->render('form_addproduct.html.twig', [
+                          #la variable «$form» est passée à la vue Twig sous le nom «form»
+                          'form' => $form,
+                          'page' => "?page=addProduct"
+                      ]);
 #sinon le produit est sauvergardée
+                  }
               }
                   else {
-                      $form= [
-                            if ($uploads['state']){
-                                $form=[
-                                'state' => "success",
-                            'message' => "Votre produit a bien était ajoute"
-    ];
-          echo $twig->render('form_addproduct.html.twig', [
-              'form' => $form
-          ]);
-      }
+
+                            if ($uploads['state']) {
+                                $form = [
+                                    'state' => "success",
+                                    'message' => "Votre produit a bien était ajoute"
+                                ];
+                                echo $twig->render('form_addproduct.html.twig', [
+                                    'form' => $form
+                                ]);
                             }
 }
