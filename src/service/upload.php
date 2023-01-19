@@ -1,14 +1,17 @@
 <?php
 
-function upload($db,$twig)
+function upload($file): string | null
 {
     $uploads = [
         'extensions' => ['png', 'jpg'],
         'path' => 'uploads/','state' => false]
     ;
+
     $file_name = null;
-    if (isset($_FILES["productImage"])) {
-        if (!empty($_FILES["productImage"]['name'])) {
+
+    if (isset($file)) {
+        if (!empty($file['name'])) {
+            var_dump($file['name']);
             $file_upload = explode(".", $_FILES["productImage"]['name']);
             // Vérification de l'extension
             # permet de vérifier la présence d’une valeur dans un tableau.
@@ -43,4 +46,6 @@ function upload($db,$twig)
         }
     }
 
+    return $file_name;
 }
+

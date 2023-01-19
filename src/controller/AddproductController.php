@@ -10,13 +10,6 @@ function addProductController($twig, $db)
 {
     $categories = getallCategory($db);
 
-    #variable de type tableau que nous allons utiliser pour paramétrer l’envoi de fichier.
-    $uploads = [
-        #clé «extensions» permettant de lister l’ensemble des extensions des fichiers qui sont autoriséesà être envoyées
-        'extensions' => ['png', 'jpg'],
-        'path' => 'uploads/', 'state' => false
-    ];
-
     #défaut défini à «null»
     $file_name = null;
 
@@ -33,6 +26,10 @@ function addProductController($twig, $db)
         }
         $category = htmlspecialchars($_POST['productCategory']);
         ##vérifie qu’une image est bien envoyée
+
+        if (isset($_FILES["productImage"])) {
+            $file_name = upload($_FILES["productImage"]);
+        }
 
         if (empty($label) || empty($description) || empty($category)) {
             {
