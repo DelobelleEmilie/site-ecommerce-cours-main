@@ -8,7 +8,7 @@ qui provienne de la classse shop ou la cle primare est id et est défini par whe
 {
     $query = $db->prepare("SELECT id, label FROM shop_category");
 #On récupères tout les résultats de la requete et stocker le resultat dans la variable product
-    $category=$query->fetchall();
+    $query->execute();
 /* On récupères touts résultats de la requete et stocker le resultat dans la variable product et retourner le resultat*/
 return $query->fetchall();
 }
