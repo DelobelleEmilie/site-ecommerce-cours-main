@@ -3,6 +3,13 @@
     Fichede produit{% endblock %}
 
 {% block content %}
+    <div class="col-md-4">
+        % if product.image %
+        }<img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
+        {% else %}
+    <img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="...">
+        {% endif %}
+    </div>
     <div class="container">
         #Se charge ici de vérifier que la valeur de la variable passée dans le contrôleur n’est pas «null» ni égale à «false».
         #Dans ce cas les informations du produit peuvent être affichées

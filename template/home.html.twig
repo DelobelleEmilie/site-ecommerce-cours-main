@@ -9,6 +9,14 @@
 <div class="container">
     <p class="test-primary">Liste des produits:</p>
 </div>
+
+    <div class="col-md-4">
+        {% if product.image %}
+            <img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
+        {% else %}
+            <img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="...">{
+        % endif %}
+    </div>
 {% for product in products %}
  <div class="card mb-3">
         <div class="row g-0">

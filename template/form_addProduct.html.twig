@@ -1,41 +1,21 @@
 {% extends "layout.html.twig" %}
 
-{% block title %}
-    Bienvenue sur le Shop !
-{% endblock %}
+    {% block title %}
+        {% switch controller %}
+        {% case 'add' %}
+            Ajout d'un produit
+        {% case 'update' %}
+            Modificatio, d'un produit
+        {% endswitch %}
+    {% endblock %}
 
 {% block content %}
-    {% if controller == 'add' %}
-        <form action="{{ page }}" method="POST">
 
-            <div class="nb-3">
-                <label for="category" class="form-label">Catégorie</label>
-                <select class="form-select" name="category" id="category">
-                    {% for category in categories %}
-                        <option value="{{ category.id }}" {% if category.id == entity.idCategory %} selected {% endif %}>{{ category.label }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="mb-3"><label for="productImage" class="form-label">Image</label>
+    <input type="file" class="form-control" id="productImage" name="productImage"></div>
+#L’attribut «enctype»,indique à PHP que toutes les informations relatives à notre fichier doivent être stockées sous la forme d’un tableau au travers de la variable globale «$_FILES»
+<form action="{{ page }}" method="POST" enctype="multipart/form-data">
 
-            <div class="nb-3">
-                <label for="productLabel" class="form-label">Libellé</label>
-                <input type="text" class="form-control" id="productLabel" name="productLabel"></intput>
-            </div>
-        </form>
-
-        <div class="nb-3">
-            <label for="productDescription" class="form-label">Description</label>
-            <textarea class="form-control" id="productDescription"></textarea>
-            <input type="text" class="form-control" id="productLabel" name="productDescription" rows="3"></intput>
-        </div>
-        <div class="nb-3">
-            <label for="productPrice" class="form-label">Prix</label>
-            <textarea class="form-control" id="productDescription"></textarea>
-            <input type="number" class="form-control" id="productPrice" name="productPrice"></intput>
-        </div>
-        </form>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
-    {% elseif controller == 'update' %}
         <form action="{{ page }}" method="POST">
 
             <div class="nb-3">
