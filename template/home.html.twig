@@ -10,18 +10,15 @@
     <p class="test-primary">Liste des produits:</p>
 </div>
 
-    <div class="col-md-4">
-        {% if product.image %}
-            <img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
-        {% else %}
-            <img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="...">{
-        % endif %}
-    </div>
 {% for product in products %}
  <div class="card mb-3">
         <div class="row g-0">
             <div class="col-md-4">
-                <img class="img-fluid rounded-start" src="https://fakeimg.pl/350x200/?text=Produit" alt="coucou" />
+                {% if product.image %}
+                    <img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
+                {% else %}
+                    <img class="img-fluid rounded-start" src="https://fakeimg.pl/350x200/?text=Produit" alt="coucou" />
+                {% endif %}
             </div>
 
             <div class="col-md-6 d-flex align-items-center">
@@ -29,7 +26,7 @@
                     <h5 class="card-title">{{product.label}}</h5>
                     <h6 class="card-title">{{product.category}}</h6>
                     <p class="card-text">{{product.description}}</p>
-                    
+
                     <a href="?page=showProduct&product={{ product.id }}" class="btn btn-primary">Voir le produit</a>
                 </div>
             </div>
@@ -41,12 +38,11 @@
             </div>
         </div>
     </div>
-    <li> <button type="button" class="btn btn-primary">Ajouter</button><a>href=http://site-ecommeerce-cours/?page=addproduct</a></li>
-    <li><button type="button" class="btn btn-secondary">Retour au menu</button><a>href=http://site-ecommeerce-cours</a>
-    </li>
-    <li><button type="button" class="btn btn-danger">Supprimer</button><a>href=http://site-ecommeerce-cours/?page=deleteproduct</a></li>
 
 {% endfor %}
+    <li> <a href="/?page=addproduct" class="btn btn-primary">Ajouter</a> </li>
+    <li> <a href="/"><button class="btn btn-secondary">Retour au menu</button></a> </li>
+    <li> <a href="/?page=deleteproduct"><button class="btn btn-danger">Supprimer</button></a> </li>
     
 {% endblock %}  
 
