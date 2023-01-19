@@ -4,10 +4,10 @@
 
 {% block content %}
     <div class="col-md-4">
-        % if product.image %
-        }<img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
+        {% if product.image %}
+            <img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
         {% else %}
-    <img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="...">
+            <img src="https://fakeimg.pl/350x200/?text=Image" class="img-fluid rounded-start" alt="...">
         {% endif %}
     </div>
     <div class="container">
