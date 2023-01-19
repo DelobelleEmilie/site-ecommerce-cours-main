@@ -1,10 +1,11 @@
 <?php
 
+#import le fichier ProductModel
+include_once '../src/model/ProductModel.php';
 
-function ShowProductController($twig,$db)
+function showProductController($twig,$db)
 {
-    #import le fichier ProductModel
-    include_once '.../src/model/ProductModel.php';
+
     #Le produit est défini sur nulle
     $product = null;
     #La condition permet de vérifier que l'identifiant du produit est bien défini dans l'URL
