@@ -1,23 +1,20 @@
 {% extends "layout.html.twig" %}
 
-    {% block title %}
-        {% switch controller %}
-        {% case 'add' %}
-            Ajout d'un produit
-        {% case 'update' %}
-            Modificatio, d'un produit
-        {% endswitch %}
-    {% endblock %}
-{% end title %}
+{% block title %}
+    {% if controller == 'add' %}
+        Ajouter un produit
+    {% else %}
+        Modifier un produit
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
-<div class="mb-3"><label for="productImage" class="form-label">Image</label>
-    <input type="file" class="form-control" id="productImage" name="productImage"></div>
-#L’attribut «enctype»,indique à PHP que toutes les informations relatives à notre fichier doivent être stockées sous la forme d’un tableau au travers de la variable globale «$_FILES»
+
+{##L’attribut «enctype»,indique à PHP que toutes les informations relatives à notre fichier doivent être stockées sous la forme d’un tableau au travers de la variable globale «$_FILES»#}
 <form action="{{ page }}" method="POST" enctype="multipart/form-data">
-
-        <form action="{{ page }}" method="POST">
-
+    <div class="mb-3"><label for="productImage" class="form-label">Image</label>
+        <input type="file" class="form-control" id="productImage" name="productImage"></div>
             <div class="nb-3">
                 <label for="category" class="form-label">Catégorie</label>
                 <select class="form-select" name="category" id="category">
@@ -29,35 +26,32 @@
 
             <div class="nb-3">
                 <label for="productLabel" class="form-label">Libellé</label>
-                <input type="text" class="form-control" id="productLabel" name="productLabel"></intput>
+                <input type="text" class="form-control" id="productLabel" name="productLabel"/>
             </div>
-        </form>
 
         <div class="nb-3">
             <label for="productDescription" class="form-label">Description</label>
             <textarea class="form-control" id="productDescription"></textarea>
-            <input type="text" class="form-control" id="productLabel" name="productDescription" rows="3"></intput>
+            <input type="text" class="form-control" id="productLabel" name="productDescription" rows="3"/>
         </div>
         <div class="nb-3">
             <label for="productPrice" class="form-label">Prix</label>
             <textarea class="form-control" id="productDescription"></textarea>
-            <input type="number" class="form-control" id="productPrice" name="productPrice"></intput>
+            <input type="number" class="form-control" id="productPrice" name="productPrice"/>
         </div>
         </form>
-<li> <a href="href=http://site-ecommeerce-cours/?page=addproduct" class="btn btn-primary">Ajouter</a> </li>
-<li> <a href="href=http://site-ecommeerce-cours/" class="btn btn-primary">Ajouter</a> </li>
-<li> <a href="href=http://site-ecommeerce-cours/?page=deleteproduct" class="btn btn-primary">Ajouter</a> </li>
+<li> <a href="/?page=addproduct" class="btn btn-primary">Ajouter</a> </li>
+    <li> <a href="/"><button class="btn btn-secondary">Retour au menu</button></a> </li>
+    <li> <a href="/?page=deleteproduct"><button class="btn btn-danger">Supprimer</button></a> </li>
 
         <button type="submit" class="btn btn-primary">
-            #vérifier la valeur de la variable controller. Selon la valeur de cette variable, une étiquette différente sera insérée dans le bouton.
-            {% switch controller %}
-            {% case 'add' %}
+{#            #vérifier la valeur de la variable controller. Selon la valeur de cette variable, une étiquette différente sera insérée dans le bouton.#}
+            {% if controller == 'add' %}
                 Ajouter
-            {% case 'update' %}
+            {% else %}
                 Modifier
-            {% endswitch %}
+            {% endif %}
         </button>
-    {% endif %}
 
 
 {% endblock %}  
