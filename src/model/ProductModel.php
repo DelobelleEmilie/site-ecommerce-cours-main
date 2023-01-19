@@ -7,7 +7,7 @@ function getallProduct($db)
 /* query = db qui prepare la selection de l'id, le label,...
 qui provienne de la classse shop ou la cle primare est id et est défini par where */
 {
-    $query = $db->prepare("SELECT id, label, `description`, price, idCategory,image  FROM shop_product");
+    $query = $db->prepare("SELECT id, label, `description`, price, idCategory, image  FROM shop_product");
 #On récupères tout les résultats de la requete et stocker le resultat dans la variable product
     $query->execute();
 /* On récupères touts résultats de la requete et stocker le resultat dans la variable product et retourner le resultat*/
@@ -27,7 +27,7 @@ function getOneProduct($db, $id)
 }
 
 #la fonction permet de sauvergarde product avec les données db,label,...
-function saveProduct($db, $label, $description, $price, $category) 
+function saveProduct($db, $label, $description, $price, $category, $image)
 {
     #la fonction query combine à la fois l'exécution de la requête et la mise en mémoire tampon du jeu de résultats
 /*query = db qui prepare l'insersertion des données dans la base shop_product*/
