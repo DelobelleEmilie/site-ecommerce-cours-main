@@ -52,7 +52,7 @@ function addProductController($twig, $db)
             }
         } else {
 
-            if ($uploads['state']) {
+            if (empty($label) || empty($description) || empty($category)) {
                 $form = [
                     'state' => "success",
                     'message' => "Votre produit a bien était ajoute"
