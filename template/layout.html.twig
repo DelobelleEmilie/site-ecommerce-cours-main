@@ -56,6 +56,16 @@ false signifie que le tableau est plié, permet de définir une
      <!--Block qui permet de modifier le contenu de chaque page -->
     {% block content %}{% endblock %}
 </body>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" class="pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="http://site-ecommeerce-cours/?page=adminProduct">Administration des produits </a>
+        <a class="dropdown-item" href="http://site-ecommeerce-cours/?page=adminProductCategories">Administration des catégories produits </a>
+    </div>
+</div>
 <!--Inclue la page footer -->
 {% include('footer.html.twig') %}
 </html>

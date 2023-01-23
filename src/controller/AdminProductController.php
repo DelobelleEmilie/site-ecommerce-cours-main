@@ -1,6 +1,6 @@
 <?php
 
-function AdminProductController()
+function AdminProductController($twig)
 {
     echo $twig->render('AdminProduct.html.twig', []);
 }
