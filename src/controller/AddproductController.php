@@ -27,11 +27,16 @@ function addProductController($twig, $db)
         $category = htmlspecialchars($_POST['productCategory']);
         ##vérifie qu’une image est bien envoyée
 
+        $file_path = null;
+
         if (isset($_FILES["productImage"])) {
-            $file_name = upload($_FILES["productImage"]);
+            $file_path = upload($_FILES["productImage"]);
+            var_dump($file_path);
         }
 
-        if (empty($label) || empty($description) || empty($category)) {
+        var_dump($label, $description, $category);
+
+        if (!empty($label) && !empty($description) && !empty($category)) {
             {
                 #la variable «$form» se constitue d’une clé «state» pour définir l’état du formulaire.
                 #Le tableau est aussi constitué d’une clé «message» danslaquelle nous renseignerons un message personnalisé pour informer l’utilisateur
@@ -40,7 +45,7 @@ function addProductController($twig, $db)
                     'message' => [$msg]
 
                 ];
-                saveProduct($db, $label, $description, $price, $category, $file_name);
+                saveProduct($db, $label, $description, $price, $category, $file_path);
 
                 #la variable «$form» est complétéeavec des informations que nous pourrons réutiliser dans la vue Twig.
                 echo $twig->render('form_addproduct.html.twig', [

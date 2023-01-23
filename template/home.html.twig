@@ -15,7 +15,7 @@
         <div class="row g-0">
             <div class="col-md-4">
                 {% if product.image %}
-                    <img src="uploads/{{ product.image }}" class="img-fluid rounded-start" alt="...">
+                    <img src="{{ product.image }}" class="img-fluid rounded-start" alt="...">
                 {% else %}
                     <img class="img-fluid rounded-start" src="https://fakeimg.pl/350x200/?text=Produit" alt="coucou" />
                 {% endif %}
