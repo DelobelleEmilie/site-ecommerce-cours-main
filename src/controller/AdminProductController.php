@@ -2,6 +2,6 @@
 
 function AdminProductController($twig)
 {
-    echo $twig->render('AdminProduct.html.twig', []);
+    echo $twig->render('admin/AdminProduct.html.twig', []);
 }
 
