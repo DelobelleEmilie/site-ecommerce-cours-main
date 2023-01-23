@@ -1,0 +1,32 @@
+{% extends "../layout.html.twig" %}
+
+{% block title %}
+    Gestion des catégories de produit
+{% endblock %}
+
+{% block content %}
+    <a href="href=http://site-ecommeerce-cours/?page=AddCategorie" class="btn btn-success " class="pull-right">Modifier Catégorie</a>
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Libellé</th>
+            <th scope="col">Actions</th>
+        </tr>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"><button class="btn"><i class="fa-duotone fa-trash"></i></button></th>
+        </tr>
+        <tr>
+            <th> scope="col"></th>
+            <th> scope="col"></th>
+            <th> scope="col"><button class="btn"><i class="fa-solid fa-code-compare"></i></button></th>
+        </tr>
+        </thead>
+        <tbody>
+    </table>
+
+ {% extends "../footer.html.twig" %}
+
+{% endblock %}

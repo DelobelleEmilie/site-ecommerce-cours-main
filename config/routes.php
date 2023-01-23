@@ -9,6 +9,8 @@ $routes =
 'pageconnexion'=> "pageconnexionController",
 'addproduct'=>"addproductController",
      'addCategory' => "addCategoryController",
-     'showProduct' => "showProductController"
+     'showProduct' => "showProductController",
+     'productCategories' => "ProductCategoriesController",
+    'adminProduct' => "AdminProductController"
 ];
 
