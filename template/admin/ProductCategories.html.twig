@@ -5,28 +5,50 @@
 {% endblock %}
 
 {% block content %}
-    <a href="href=http://site-ecommeerce-cours/?page=AddCategorie" class="btn btn-success " class="pull-right">Modifier Catégorie</a>
+
     <table class="table table-dark">
         <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Libellé</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Catégorie</th>
             <th scope="col">Actions</th>
         </tr>
         <tr>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col"><button class="btn"><i class="fa-duotone fa-trash"></i></button></th>
-        </tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+            <th>
+
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+
+            </th>
+
         <tr>
-            <th> scope="col"></th>
-            <th> scope="col"></th>
-            <th> scope="col"><button class="btn"><i class="fa-solid fa-code-compare"></i></button></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th>
+
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+
+            </th>
+
         </tr>
+
         </thead>
+
         <tbody>
     </table>
 
- {% extends "../footer.html.twig" %}
+    {% extends "../footer.html.twig" %}
 
 {% endblock %}
