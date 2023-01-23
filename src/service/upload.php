@@ -8,6 +8,8 @@ function upload($file): string | null
         'state' => false
     ];
 
+    var_dump($_FILES);
+
     $file_name = null;
     if (isset($_FILES["productImage"])) {
         if (!empty($_FILES["productImage"]['name'])) {
@@ -79,4 +81,6 @@ function upload($file): string | null
 
 
     }
+
+    return $file_path;
 }
