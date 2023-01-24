@@ -4,71 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!--Ajouter le titre puis block qui permet de modifier le contenu chaque page -->
+    <!--Ajouter le titre puis block qui permet de modifier le contenu chaque page -->
     <title>Shop - {% block title %}{% endblock %}</title>
-      <!--Inclue la bliblioteque bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"  rel="stylesheet" crossorigin="anonymous">
+    <!--Inclue la bliblioteque bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
     <!--Inclue la bliblioteque bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.js"  crossorigin="anonymous"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.js"
+            crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/100a30612c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit.fontawesome.com/100a30612c.css" crossorigin="anonymous">
 </head>
 
 <body>
- <!--Ajouter une barre de niavigation avec un fond noir et une ecriture grise -->
+<!--Ajouter une barre de niavigation avec un fond noir et une ecriture grise -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
- <!--Centre le titre de la barre de navigation  -->
-<div class="container"> <a class="navbar-brand" href="#">Shop</a>
- <!--Créer une class bouton, déclare le type de bouton, rends responsive le bouton, -->
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+    <!--Centre le titre de la barre de navigation  -->
+    <div class="container">
+        <a class="navbar-brand" href="#">Shop</a>
+        <!--Créer une class bouton, déclare le type de bouton, rends responsive le bouton, -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 
-aria-expanded="false" aria-label="toggle Navigation"> <!--La fonction aria doit être appliqué sur un bouton ,
+                aria-expanded="false" aria-label="toggle Navigation"> <!--La fonction aria doit être appliqué sur un bouton ,
 false signifie que le tableau est plié, permet de définir une
  légende non-visible associée à un élément HTML dont le sens est transmis uniquement par le visuel.-->
-<!--De faire les 3 traits quand le menu se cache-->
-<span class="navbar-toggler-icon"></span>
-</button>
-     <!---->
-     <div class="collapse navbar-collapse" id="navbarResponsive">
-  <!--Créer une liste de bouton pour la nav bar, mb= margin-bottom = marge du dessous,
-    la marge est de 2 sauf si l'écran est grand elle est de 0-->
- <ul class="navbar-nav" mb-2 mb-lg-0>
-   <!--Créer une liste de bouton de navigations-->
- <li class="nav-item"><a href="#" class="nav-link"> Accueil</a></li>
-  <li class="nav-item"><a href="#" class="nav-link"> Contact</a></li>
-     <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Dropdown link
-         </a>
-         <div class="dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-             <div class="dropdown_menu-right">
-             <a class="dropdown-item" href="#">Action</a>
-             <a class="dropdown-item" href="#">Another action</a>
-             <a class="dropdown-item" href="#">Something else here</a>
-         </div>
-            </div>
-     </li>
-    </ul>
-     </div>
-
-
-     </div>
-      </div>
-      </nav>
-       <!--bg-light = couleur de fond en gris
-        rounded pour arrondir les angles
-        px-5, padding horizontal
-        py-4  padding vertical-->
-<div class="bg-light rounded px-5 py-4 mb-5 ">
- <!--Centre le titre  -->
-        <div class="container"> <h1>Bienvenue sur la boutique!</h1>
-         <!--Ajouter le texte -->
-        <p class="lead text-muted">Achetez vos produit sur notre boutique en ligne</p>
+            <!--De faire les 3 traits quand le menu se cache-->
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!---->
+        <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+            <!--Créer une liste de bouton pour la nav bar, mb= margin-bottom = marge du dessous,
+              la marge est de 2 sauf si l'écran est grand elle est de 0-->
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <!--Créer une liste de bouton de navigations-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link"> Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"> Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
+
+
     </div>
-    
-     <!--Block qui permet de modifier le contenu de chaque page -->
-    {% block content %}{% endblock %}
+    </div>
+</nav>
+<!--bg-light = couleur de fond en gris
+ rounded pour arrondir les angles
+ px-5, padding horizontal
+ py-4  padding vertical-->
+<div class="bg-light rounded px-5 py-4 mb-5 ">
+    <!--Centre le titre  -->
+    <div class="container"><h1>Bienvenue sur la boutique!</h1>
+        <!--Ajouter le texte -->
+        <p class="lead text-muted">Achetez vos produit sur notre boutique en ligne</p>
+    </div>
+</div>
+
+<!--Block qui permet de modifier le contenu de chaque page -->
+{% block content %}{% endblock %}
 </body>
 
 </div>
