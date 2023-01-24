@@ -18,3 +18,5 @@ if (gettype($db) == "string") {
 
 $actionController = initRouter($routes);
 $actionController($twig, $db);
+
+session_start()
