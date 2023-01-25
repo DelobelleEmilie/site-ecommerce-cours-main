@@ -14,5 +14,5 @@
 ## 🙇 Author
 Emilie Delobelle
 ##
-[Link](https://docs.google.com/document/d/18FF7U-kNIVHd0kMevQ6YbHDqeW8q3v0z9hsH8QK-unI/edit?usp=sharing)
+[Documentation technique](https://docs.google.com/document/d/18FF7U-kNIVHd0kMevQ6YbHDqeW8q3v0z9hsH8QK-unI/edit?usp=sharing)
         
