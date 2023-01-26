@@ -33,4 +33,16 @@ else {$form = [
 }
 echo $twig->render('register.html.twig', ['form' => $form]);
 
+if (empty($_POST['username'])) {
+    echo "Le champ nom d'utilisateur est vide.";
+}
+
+if (empty($_POST['password'])) {
+    echo "Le champ mot de passe est vide.";
+}
+
+if (strlen($_POST['password']) < 3) {
+    echo "Le mot de passe doit avoir au moins 3 caractères.";
+}
+
 }
