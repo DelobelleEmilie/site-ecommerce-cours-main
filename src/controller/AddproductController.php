@@ -5,6 +5,25 @@ include_once '../src/model/CategoryModel.php';
 include_once '../src/service/upload.php';
 
 
+public function delete($id)
+{
+    $this->repository->delete($id);
+
+    $listUrl = $this->url('product#showList');
+
+    $this->redirect($listUrl);
+
+    if ( $this = $listUrl)
+    {
+        echo $twig->render('form_category.html.twig', [
+        'form' => $form
+    ]);
+
+}
+    else {
+        header("Location: index.php");
+    }
+}
 #Si on saisis le formulaire $_POST contient les données ducoup les produit s'enregistre et raffiche le formulaire vide
 function addProductController($twig, $db)
 {

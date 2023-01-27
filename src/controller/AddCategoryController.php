@@ -2,6 +2,25 @@
 
 include_once '../src/model/CategoryModel.php';
 
+public function delete($id)
+{
+    $this->repository->delete($id);
+
+    $listUrl = $this->url('product#showList');
+
+    $this->redirect($listUrl);
+
+    if ( $this = $listUrl)
+    {
+        echo $twig->render('form_category.html.twig', [
+            'form' => $form
+        ]);
+
+    }
+    else {
+        header("Location: index.php");
+    }
+}
 function addCategoryController($twig, $db)
 {
     include_once '../src/model/CategoryModel.php';
@@ -22,3 +41,4 @@ function addCategoryController($twig, $db)
         }
     }
 }
+
