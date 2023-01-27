@@ -69,7 +69,7 @@ false signifie que le tableau est plié, permet de définir une
                     </ul>
                 </li>
                 </ul>
-            {% elif  session.auth.login  is admintrator  %}
+            {% elseif session.auth.login == 'admintrator'  %}
                 <a href="?page=admin" class="btn btn-success ms-2">Pageadmin</a>
                 {% else %}
                 <a href="?page=register" class="btn ms-2 text-light">S'inscrire</a>

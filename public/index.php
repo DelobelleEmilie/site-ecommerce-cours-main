@@ -7,6 +7,8 @@ require_once '../src/twig.php';
 require_once '../config/config.php';
 require_once '../src/database.php';
 
+session_start();
+
 
 $twig = initTwig('../template');
 $db = getConnection($config);
@@ -19,4 +21,3 @@ if (gettype($db) == "string") {
 $actionController = initRouter($routes);
 $actionController($twig, $db);
 
-session_start()
