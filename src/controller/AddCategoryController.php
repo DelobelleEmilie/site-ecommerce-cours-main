@@ -1,32 +1,15 @@
 <?php
 
-include_once '../src/model/CategoryModel.php';
+require_once '../src/model/categorymodel';
 
-public function delete($id)
-{
-    $this->repository->delete($id);
-
-    $listUrl = $this->url('product#showList');
-
-    $this->redirect($listUrl);
-
-    if ( $this = $listUrl)
-    {
-        echo $twig->render('form_category.html.twig', [
-            'form' => $form
-        ]);
-
-    }
-    else {
-        header("Location: index.php");
-    }
-}
 function addCategoryController($twig, $db)
 {
     include_once '../src/model/CategoryModel.php';
     $form = [];
     if (isset($_POST['btnAddCategory'])) {
         $label = htmlspecialchars($_POST['CategoryLabel']);
+        $description = htmlspecialchars($_POST['CategoryDescription']);
+        $category = htmlspecialchars($_POST['CategoryParent']);
         if (!empty($label) && !empty($description) && !empty($category)) {
             $form = [
                 'state' => 'success',
@@ -40,5 +23,19 @@ function addCategoryController($twig, $db)
             ]);
         }
     }
+    if (isset($_POST['btnDeleteCategory'])) {
+        $id = $_POST['CategoryId'];
+        if (!empty($id)) {
+            deleteCategory($db, $id);
+            $form = [
+                'state' => 'success',
+                'message' => 'Votre catégorie a bien été supprimée !'
+            ];
+        } else {
+            $form = ['state' => 'danger', 'message' => 'La suppression de la catégorie a échouée !'];
+            echo $twig->render('form_category.html.twig', [
+                'form' => $form
+            ]);
+        }
+    }
 }
-

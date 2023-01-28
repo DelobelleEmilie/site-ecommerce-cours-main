@@ -5,25 +5,7 @@ include_once '../src/model/CategoryModel.php';
 include_once '../src/service/upload.php';
 
 
-public function delete($id)
-{
-    $this->repository->delete($id);
 
-    $listUrl = $this->url('product#showList');
-
-    $this->redirect($listUrl);
-
-    if ( $this = $listUrl)
-    {
-        echo $twig->render('form_category.html.twig', [
-        'form' => $form
-    ]);
-
-}
-    else {
-        header("Location: index.php");
-    }
-}
 #Si on saisis le formulaire $_POST contient les données ducoup les produit s'enregistre et raffiche le formulaire vide
 function addProductController($twig, $db)
 {
@@ -94,4 +76,15 @@ function addProductController($twig, $db)
             'categories' => $categories
         ]);
     }
+    #ajout de la condition pour verifier si le formulaire de suppression a été soumis
+    if (isset($_POST['btnDeleteProduct'])) {
+        #récupération de l'ID du produit à supprimer
+        $id = htmlspecialchars($_POST['productId']);
+        #utilisation de la fonction appropriée pour supprimer le produit de la base de données
+        deleteProduct($db, $id);
+        #redirection vers la liste des produits pour afficher la mise à jour
+        header("Location: index.php?page=showList");
+        exit;
+    }
+
 }
