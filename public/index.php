@@ -1,22 +1,24 @@
 <?php
 
 require_once '../vendor/autoload.php';
-require_once '../config/routes.php';
-require_once '../src/router.php';
-require_once '../src/twig.php';
-require_once '../config/config.php';
-require_once '../src/database.php';
+
+use src\router;
+use src\twig;
+use src\config;
+use src\database;
 
 session_start();
 
-$twig = initTwig('../template');
-$db = getConnection($config);
+$config = require_once '../config/config.php';
+$routes = require_once '../config/routes.php';
+
+$twig = twig::initTwig('../template');
+$db = database::getConnection($config);
 
 if (gettype($db) == "string") {
-  echo $twig->render('error.html.twig', ['message' => 'Notre site est actuellement indisponible, revenez dans quelques minutes.']);
-  die();
+    echo $twig->render('error.html.twig', ['message' => 'Notre site est actuellement indisponible, revenez dans quelques minutes.']);
+    die();
 }
 
-$actionController = initRouter($routes);
+$actionController = router::initRouter($routes);
 $actionController($twig, $db);
-
