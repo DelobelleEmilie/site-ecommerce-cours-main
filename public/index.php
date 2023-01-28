@@ -9,7 +9,6 @@ require_once '../src/database.php';
 
 session_start();
 
-
 $twig = initTwig('../template');
 $db = getConnection($config);
 
