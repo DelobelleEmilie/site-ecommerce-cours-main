@@ -1,11 +1,9 @@
 <?php
 
-require_once '../src/model/categorymodel';
-include_once '../src/model/CategoryModel.php';
+require_once '../src/model/CategoryModel.php';
 
 function addCategoryController($twig, $db)
 {
-
     $form = [];
     if (isset($_POST['btnAddCategory'])) {
         $label = htmlspecialchars($_POST['CategoryLabel']);
