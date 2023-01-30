@@ -49,7 +49,7 @@ function addProductController($twig, $db)
                 saveProduct($db, $label, $description, $price, $category, $file_path);
 
                 #la variable «$form» est complétéeavec des informations que nous pourrons réutiliser dans la vue Twig.
-                echo $twig->render('form_addproduct.html.twig', [
+                echo $twig->render('addproduct.html.twig', [
                     #la variable «$form» est passée à la vue Twig sous le nom «form»
                     'form' => $form,
                     'page' => "?page=addProduct"
@@ -63,14 +63,14 @@ function addProductController($twig, $db)
                     'state' => "success",
                     'message' => "Votre produit a bien était ajoute"
                 ];
-                echo $twig->render('form_addproduct.html.twig', [
+                echo $twig->render('addproduct.html.twig', [
                     'form' => $form
                 ]);
             }
         }
     }
     else {
-        echo $twig->render('form_addproduct.html.twig', [
+        echo $twig->render('addproduct.html.twig', [
             'form' => $form,
             'controller' => 'add',
             'categories' => $categories

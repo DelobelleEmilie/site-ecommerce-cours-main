@@ -14,7 +14,7 @@ $routes =
     'adminProduct' => "AdminProductController",
      'login' => "LoginController",
      'Register' => "RegisterController",
-     'admin' => "adminController",
+     'admin' => "adminProductController",
      'logout'=>"logoutController"
 ];
 

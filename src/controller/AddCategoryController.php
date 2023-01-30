@@ -1,10 +1,11 @@
 <?php
 
 require_once '../src/model/categorymodel';
+include_once '../src/model/CategoryModel.php';
 
 function addCategoryController($twig, $db)
 {
-    include_once '../src/model/CategoryModel.php';
+
     $form = [];
     if (isset($_POST['btnAddCategory'])) {
         $label = htmlspecialchars($_POST['CategoryLabel']);
@@ -18,7 +19,7 @@ function addCategoryController($twig, $db)
             saveProduct($db, $label,$category);
         } else {
             $form = ['state' => 'danger', 'message' => 'Votre Category n\'a pas été ajouté car les champs obligatoires n\'ont pas été remplis !'];
-            echo $twig->render('form_category.html.twig', [
+            echo $twig->render('addcategory.html.twig', [
                 'form' => $form
             ]);
         }
@@ -33,7 +34,7 @@ function addCategoryController($twig, $db)
             ];
         } else {
             $form = ['state' => 'danger', 'message' => 'La suppression de la catégorie a échouée !'];
-            echo $twig->render('form_category.html.twig', [
+            echo $twig->render('addcategory.html.twig', [
                 'form' => $form
             ]);
         }
