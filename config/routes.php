@@ -11,7 +11,7 @@ $routes =
 
         // Authentication
         'login' => "LoginController",                       // Formulaire de connexion
-        'Register' => "RegisterController",                 // Formulaire d'inscription
+        'register' => "RegisterController",                 // Formulaire d'inscription
         'logout' => "logoutController",                     // Déconnexion
 
         // Admin - Product
