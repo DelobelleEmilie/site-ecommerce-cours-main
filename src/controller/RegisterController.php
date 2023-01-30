@@ -1,6 +1,7 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 include_once '../src/model/UserModel.php';
 
@@ -35,7 +36,6 @@ function registerController($twig, $db)
         ];
 
         if (isset($email) && strlen($email) > 0 && isset($firstname) && isset($lastname)) {
-
             if (count(getOneUserCredentials($db, $email)) === 0) {
                 if ($password === $passwordConfirm) {
                     saveUser($db, $email, password_hash($password, PASSWORD_DEFAULT), $lastname, $firstname, 1);
@@ -45,6 +45,12 @@ function registerController($twig, $db)
                     //Initialisation de la librairie
                     $mail = new PHPMailer(true);
                     $mail->CharSet = "UTF-8";
+
+                    // Config
+                    $mail->isSMTP();
+                    $mail->SMTPDebug = SMTP::DEBUG_OFF;
+                    $mail->Host = 'mailer';
+                    $mail->Port = 1025;
 
                     //Ajout des addresses(origine et destinataire)
                     $mail->setFrom('noreply@shop.fr', 'Shop');

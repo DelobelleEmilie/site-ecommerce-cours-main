@@ -11,22 +11,17 @@ function getOneUserCredentials($db, $email) {
     return $query->fetchAll();
 }
 
-function saveUser($db, $email, $password, $lastname, $firstname, $role) {
+function saveUser($db, $email, $password, $lastname, $firstname, $idRole) {
     // Récupération des données de l'utilisateur à partir du formulaire
-
-    $lastname = $_POST["name"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $firstname = $_POST["lastname"];
-    $role = $_POST["role"];
-
     // Requête SQL pour insérer les données de l'utilisateur dans la base de données
-    $sql = "INSERT INTO shop_users (name, email, password) VALUES ('$lastname', '$email', '$password', '$role','$firstname')";
-
-    if (mysqli_query($db, $sql)) {
-        echo "L'utilisateur a été enregistré avec succès.";
-    } else {
-        echo "Erreur lors de l'enregistrement de l'utilisateur : " . mysqli_error($db);
-    }
-
+    $query = $db->prepare(
+        "INSERT INTO shop_users (email, password, lastname, firstname, idRole) VALUES (:email, :password, :lastname, :firstname, :idRole)"
+    );
+    $query->execute([
+        'email' => $email,
+        'password' => $password,
+        'lastname' => $lastname,
+        'firstname' => $firstname,
+        'idRole' => $idRole
+    ]);
 }
