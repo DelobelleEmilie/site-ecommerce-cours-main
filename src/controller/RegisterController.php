@@ -1,5 +1,6 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
 include_once '../src/model/UserModel.php';
 
 function registerController($twig, $db)
