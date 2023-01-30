@@ -2,5 +2,7 @@
 function initTwig($path)
 {
     $loader = new \Twig\Loader\FilesystemLoader($path);
-    return new \Twig\Environment($loader, []);
+    $twig = new \Twig\Environment($loader, []);
+    $twig->addGlobal('session', $_SESSION);
+    return $twig;
 }
