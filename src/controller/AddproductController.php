@@ -83,8 +83,8 @@ function addProductController($twig, $db)
         #utilisation de la fonction appropriée pour supprimer le produit de la base de données
         deleteProduct($db, $id);
         #redirection vers la liste des produits pour afficher la mise à jour
-        header("Location: index.php?page=showList");
-        exit;
+        header("Location: /?page=showList");
+        die();
     }
 
 }
