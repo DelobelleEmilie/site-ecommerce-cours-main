@@ -46,23 +46,29 @@ function registerController($twig, $db)
                     $mail = new PHPMailer(true);
                     $mail->CharSet = "UTF-8";
 
-                    // Config
-                    $mail->isSMTP();
-                    $mail->SMTPDebug = SMTP::DEBUG_OFF;
-                    $mail->Host = 'mailer';
-                    $mail->Port = 1025;
+                    $mail = new PHPMailer(true);  // Cree un nouvel objet PHPMailer
+                    $mail->CharSet = "UTF-8";
 
-                    //Ajout des addresses(origine et destinataire)
+                    $mail->IsSMTP(); // active SMTP
+                    $mail->SMTPDebug = SMTP::DEBUG_OFF;
+
+                    $mail->SMTPAuth = true;  // Authentification SMTP active
+                    $mail->SMTPSecure = 'ssl'; // Gmail REQUIERT Le transfert securise
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->Port = 465;
+                    $mail->Username = 'noreplyprojetshop@gmail.com';
+                    $mail->Password = 'xP;z33T]%E1UJ[[+';
+
                     $mail->setFrom('noreply@shop.fr', 'Shop');
                     $mail->addAddress($email, $firstname . '' . $lastname);
 
-                    //contenu
                     $mail->isHTML(true);
                     $mail->Subject = 'Inscription à Shop';
                     $mail->Body = $twig->render("/mail/register_message.html.twig", [
                         'email' => $email
                     ]);
-                    $mail->send();
+
+                    $mail->Send();
 
                 } else {
                     $form['state'] = 'danger';
