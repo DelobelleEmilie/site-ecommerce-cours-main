@@ -1,5 +1,5 @@
 <?php
-function aboutController()
+function aboutController($twig)
 {
     echo "Page à propos";
 }

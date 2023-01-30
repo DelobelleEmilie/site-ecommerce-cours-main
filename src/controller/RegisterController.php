@@ -15,6 +15,23 @@ if (isset($_POST['btnPostRegister']))
     $passwordConfirm = $_POST['userPasswordConfirm'];
     $lastname = $_POST['userLastname'];
     $firstname = $_POST['userFirstname'];
+
+    //Initialisation de la librairie
+    $mail = new PHPMailer(true);
+    $mail ->CharSet = "UTF-8";
+
+    //Ajout des addresses(origine et destinataire)
+    $mail -> setFrom('noreply@shop.fr','Shop');
+    $mail -> addAddress($mail,$firstname.''.$lastname);
+
+    //contenu
+    $mail -> isHTML(true);
+    $mail -> Subject='Inscription à Shop';
+    $mail -> Body = $twig -> render("/mail/register_message.html.twig",[
+        'email' => $email
+]);
+    $mail -> send();
+
     if (count(getOneUserCredentials($db, $email)) === 0)
     {
         if ($password === $passwordConfirm)
