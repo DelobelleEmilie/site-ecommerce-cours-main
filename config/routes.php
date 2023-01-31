@@ -28,9 +28,12 @@ $routes =
         'adminCategoryEdit' => 'AdminCategoryEditController',
         'adminCategoryAdd' => 'AdminCategoryAddController',
         'adminCategoryDelete' => 'AdminCategoryDeleteController',
-
-        'productCategories' => "ProductCategoriesController",
-        'adminProduct' => "AdminProductController",
-        'admin' => "adminProductController"
+        
+        // Admin - User
+        'adminUserList' => 'AdminUserListController',
+        'adminUserShow' => 'AdminUserShowController',
+        'adminUserEdit' => 'AdminUserEditController',
+        'adminUserAdd' => 'AdminUserAddController',
+        'adminUserDelete' => 'AdminUserDeleteController'
     ];
 
