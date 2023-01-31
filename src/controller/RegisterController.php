@@ -38,9 +38,8 @@ function registerController($twig, $db)
         if (isset($email) && strlen($email) > 0 && isset($firstname) && isset($lastname)) {
             if (count(getOneUserCredentials($db, $email)) === 0) {
                 if ($password === $passwordConfirm) {
+
                     saveUser($db, $email, password_hash($password, PASSWORD_DEFAULT), $lastname, $firstname, 1);
-                    $form['state'] = 'success';
-                    $form['message'] = 'Vous êtes maintenant inscrit au site !';
 
                     //Initialisation de la librairie
                     $mail = new PHPMailer(true);
@@ -60,7 +59,7 @@ function registerController($twig, $db)
                     $mail->Password = 'B4kE8P6JSsaKm4jO';
 
                     $mail->setFrom('noreply@shop.fr', 'Shop');
-                    $mail->addAddress($email, $firstname . '' . $lastname);
+                    $mail->addAddress($email, $firstname . ' ' . $lastname);
 
                     $mail->isHTML(true);
                     $mail->Subject = 'Inscription à Shop';
@@ -70,6 +69,9 @@ function registerController($twig, $db)
 
                     $mail->Send();
 
+                    header('location: /');
+                    die();
+
                 } else {
                     $form['state'] = 'danger';
                     $form['message'] = 'Les deux mots de passe ne correspondent pas !';
@@ -77,16 +79,12 @@ function registerController($twig, $db)
             } else {
                 $form['state'] = 'danger';
                 $form['message'] = 'Un compte avec cette adresse mail existe déjà !';
-
             }
         } else {
             $form['state'] = 'danger';
             $form['message'] = 'Tous les champs obligatoires ne sont pas renseignés.';
         }
-
-
     }
-
     echo $twig->render('register.html.twig', ['form' => $form]);
 
 }
