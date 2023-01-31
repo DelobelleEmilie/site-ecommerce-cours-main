@@ -10,12 +10,17 @@ require_once '../src/database.php';
 session_start();
 
 $twig = initTwig('../template');
+if (!isset($config)) {
+    $config = null;
 $db = getConnection($config);
+}
 
 if (gettype($db) == "string") {
     echo $twig->render('error.html.twig', ['message' => 'Notre site est actuellement indisponible, revenez dans quelques minutes.']);
     die();
 }
-
-$actionController = initRouter($routes);
+if (!isset($routes)) {
+    $routes = null;
+    $actionController = initRouter($routes);
+}
 $actionController($twig, $db);
