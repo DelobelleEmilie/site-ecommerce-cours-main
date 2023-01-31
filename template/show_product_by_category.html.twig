@@ -14,6 +14,11 @@
                     Accès par catégorie
                 </a>
                 <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="/">
+                            Tous les produits
+                        </a>
+                    </li>
                     {% for category in categories %}
                         <li>
                             <a class="dropdown-item" href="/?page=showProductByCategory&category={{ category.id }}">
@@ -27,7 +32,7 @@
     {% endif %}
 
     <div class="container">
-        <p class="test-primary">Liste des produits:</p>
+        <p class="test-primary">Liste des produits de la catégorie {{ category.label }} :</p>
     </div>
 
     {% for product in products %}
@@ -37,16 +42,15 @@
                     {% if product.image %}
                         <img src="{{ product.image }}" class="img-fluid rounded-start" alt="...">
                     {% else %}
-                        <img class="img-fluid rounded-start" src="https://fakeimg.pl/350x200/?text=Produit"
-                             alt="coucou"/>
+                        <img class="img-fluid rounded-start" src="https://fakeimg.pl/350x200/?text=Produit" alt="coucou" />
                     {% endif %}
                 </div>
 
                 <div class="col-md-6 d-flex align-items-center">
                     <div class="card-body">
-                        <h5 class="card-title">{{ product.label }}</h5>
-                        <h6 class="card-title">{{ product.category }}</h6>
-                        <p class="card-text">{{ product.description }}</p>
+                        <h5 class="card-title">{{product.label}}</h5>
+                        <h6 class="card-title">{{product.category}}</h6>
+                        <p class="card-text">{{product.description}}</p>
 
                         <a href="?page=showProduct&product={{ product.id }}" class="btn btn-primary">Voir le produit</a>
                     </div>
@@ -54,16 +58,16 @@
 
                 <div class="col-md-2 d-flex align-items-center">
                     <div class="card-body d-flex justify-content-center">
-                        <h5 class="text-primary">{{ product.price }}</h5>
+                        <h5 class="text-primary">{{product.price}}</h5>
                     </div>
                 </div>
             </div>
         </div>
 
     {% endfor %}
-    {#    <li> <a href="/?page=addproduct" class="btn btn-primary">Ajouter</a> </li> #}
-    {#    <li> <a href="/"><button class="btn btn-secondary">Retour au menu</button></a> </li> #}
-    {#    <li> <a href="/?page=deleteproduct"><button class="btn btn-danger">Supprimer</button></a> </li> #}
+    {#    <li> <a href="/?page=addproduct" class="btn btn-primary">Ajouter</a> </li>#}
+    {#    <li> <a href="/"><button class="btn btn-secondary">Retour au menu</button></a> </li>#}
+    {#    <li> <a href="/?page=deleteproduct"><button class="btn btn-danger">Supprimer</button></a> </li>#}
 
-{% endblock %}  
+{% endblock %}
 

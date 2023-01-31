@@ -14,6 +14,16 @@ qui provienne de la classse shop ou la cle primare est id et est défini par whe
 return $query->fetchall();
 }
 
+function getAllProductByCategory($db, $categoryId)
+{
+    if ($categoryId === null) { return getallProduct($db); }
+    $query = $db->prepare("SELECT id, label, `description`, price, idCategory, image  FROM shop_product WHERE idCategory = :idCategory");
+    $query->execute([
+        'idCategory' => $categoryId
+    ]);
+    return $query->fetchAll();
+}
+
 function getOneProduct($db, $id)
 #la fonction query combine à la fois l'exécution de la requête et la mise en mémoire tampon du jeu de résultats
     /*query = db qui prepare la selection de l'id, le label,...

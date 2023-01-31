@@ -28,7 +28,8 @@ function homeController($twig, $db)
 
 
     echo $twig->render('home.html.twig', [
-        'products' => $products
+        'products' => $products,
+        'categories' => $categories
     ]);
 }
 

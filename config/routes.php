@@ -4,6 +4,7 @@ $routes =
     [
         // Shop
         'home' => "homeController",                         // Liste des produits mis en avant
+        'showProductByCategory' => 'showProductByCategoryController',
         'showProduct' => "showProductController",           // Fiche d'un produit
         'about' => "aboutController",                       // Page à propos
         'contact' => "contactController",                   // Page de contact
