@@ -1,4 +1,5 @@
 <?php
+
 $routes =
     [
         // Shop
@@ -10,8 +11,8 @@ $routes =
         'mentionslegales' => "mentionslegalesController",   // Page des mentions légales
 
         // Authentication
-        'login' => "LoginController",                       // Formulaire de connexion
-        'register' => "RegisterController",                 // Formulaire d'inscription
+        'login' => "loginController",                       // Formulaire de connexion
+        'register' => "registerController",                 // Formulaire d'inscription
         'logout' => "logoutController",                     // Déconnexion
 
         // Admin - Product

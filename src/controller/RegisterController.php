@@ -54,10 +54,10 @@ function registerController($twig, $db)
 
                     $mail->SMTPAuth = true;  // Authentification SMTP active
                     $mail->SMTPSecure = 'ssl'; // Gmail REQUIERT Le transfert securise
-                    $mail->Host = 'smtp.gmail.com';
+                    $mail->Host = 'smtp.mailosaur.net';
                     $mail->Port = 465;
-                    $mail->Username = 'noreplyprojetshop@gmail.com';
-                    $mail->Password = 'xP;z33T]%E1UJ[[+';
+                    $mail->Username = 'vjjsxfsc@mailosaur.net';
+                    $mail->Password = 'B4kE8P6JSsaKm4jO';
 
                     $mail->setFrom('noreply@shop.fr', 'Shop');
                     $mail->addAddress($email, $firstname . '' . $lastname);
