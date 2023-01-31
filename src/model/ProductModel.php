@@ -54,22 +54,24 @@ function saveProduct($db, $label, $description, $price, $category, $image)
     ]);
 }
 
-function updateOneProduct($db,$id,$label,$description,$price,$category)
+function updateOneProduct($db, $id, $label, $description, $price, $category, $file_path)
 {
     # mettre à jour une la base de donnée
-    $query = $db->prepare("UPDATE shop_product SET label=:label, `description`=:desc,price=:price,idCategory=:$category WHERE id=:id");
+    $query = $db->prepare("UPDATE shop_product SET label=:label, description=:desc,price=:price,idCategory=:category,image=:image WHERE id=:id");
     return $query->execute([
         #La requête est constituée de valeurs dynamiques. Ces valeurs seront remplacées par les variables que nous lui passerons en paramètre
         'id'=> $id,
         'label' => $label,
-        'descr' => $description,
+        'desc' => $description,
         'price' => $price,
         'category' => $category,
+        'image' => $file_path
     ]);
 }
 
 function deleteOneProduct($db, $id)
-{$query = $db->prepare("DELETE FROM shopcourse_products WHERE id=:id");
+{
+    $query = $db->prepare("DELETE FROM shop_product WHERE id=:id");
     $query->execute(['id' => $id]);
     if ($query->rowCount() > 0)
     {

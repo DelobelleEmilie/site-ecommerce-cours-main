@@ -8,7 +8,7 @@ function upload($file): string | null
         'state' => false
     ];
 
-    var_dump($_FILES);
+    $file_path = null;
 
     $file_name = null;
     if (isset($_FILES["productImage"])) {

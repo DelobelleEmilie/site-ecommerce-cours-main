@@ -17,10 +17,17 @@ $routes =
         'logout' => "logoutController",                     // Déconnexion
 
         // Admin - Product
-        'Adminaddproduct' => "AdminaddproductController",   // Formulaire d'ajout de produit
+        'adminProductList' => 'AdminProductListController',
+        'adminProductShow' => 'AdminProductShowController',
+        'adminProductEdit' => 'AdminProductEditController',
+        'adminProductAdd' => 'AdminProductAddController',
+        'adminProductDelete' => 'AdminProductDeleteController',
 
         // Admin - Category
-        'AdminaddCategory' => "AdminaddCategoryController", // Formaulaire d'ajout de catégorie
+        'adminCategoryList' => 'AdminCategoryListController',
+        'adminCategoryEdit' => 'AdminCategoryEditController',
+        'adminCategoryAdd' => 'AdminCategoryAddController',
+        'adminCategoryDelete' => 'AdminCategoryDeleteController',
 
         'productCategories' => "ProductCategoriesController",
         'adminProduct' => "AdminProductController",
