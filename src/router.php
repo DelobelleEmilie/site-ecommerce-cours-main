@@ -25,6 +25,16 @@ function initRouter($routes)
                 $route = $routes['error'];
         }
         $controller = ucfirst($route);
+        $routeParameters = explode('.',$route);
+        $controller =ucfirst($routeParameters[0]);
+        $access = $routeParameters[1] ?? 0;
+        if ($access !=0)
+        {
+            if (!isset($_SESSION['auth']) ||$_SESSION['auth']['role']< $access)
+                {
+    $controller ="HomeController";
+                }
+        }
     //Require le fichier controller HomeController.php
         require_once 'controller/' .$controller.'.php';
 
