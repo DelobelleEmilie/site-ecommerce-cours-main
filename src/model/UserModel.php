@@ -69,3 +69,18 @@ function getAllUsers($db)
     $query->execute();
     return $query->fetchAll();
 }
+
+function setUserActive($db, $id, $active)
+{
+    $query = $db->prepare("UPDATE shop_users SET active=:active WHERE id=:id");
+    $query->execute([
+        'id' => $id,
+        'active' => $active ? 1 : 0
+    ]);
+    if ($query->rowCount() == 1) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
