@@ -13,6 +13,11 @@ function loginController($twig, $db)
         ]
     ];
 
+    if (isset($_SESSION['auth']))
+    {
+        header('Location:index.php');
+    }
+
     if (!empty($_POST)) {
         $email = $_POST['email'] ?? null;
         $password = $_POST['password'] ?? null;
