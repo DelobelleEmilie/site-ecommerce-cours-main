@@ -46,9 +46,6 @@ false signifie que le tableau est plié, permet de définir une
                         </ul>
                     </li>
                 </ul>
-            {% endif %}
-
-            {% if session.auth is defined %}
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -66,6 +63,29 @@ false signifie que le tableau est plié, permet de définir une
                         </ul>
                     </li>
                 </ul>
+            {% endif %}
+            {% if session.auth.role == 1 %}
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <i class="fa-sharp fa-solid fa-user"></i>
+                             
+                            {{ session.auth.login }}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="">Mon panier (0)</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="/?page=logout">Déconnexion</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="/?page=profil">Modifier son profil</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endif %}
             {% else %}
                 <a href="/?page=register" class="btn ms-2 text-light">S'inscrire</a>
                 <a href="/?page=login" class="btn btn-success ms-2">Se connecter</a>
