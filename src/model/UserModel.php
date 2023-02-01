@@ -32,7 +32,7 @@ function saveUser($db, $email, $password, $lastname, $firstname, $idRole)
     );
     $query->execute([
         'email' => $email,
-        'password' => $password,
+        'password' => password_hash($password, PASSWORD_DEFAULT),
         'lastname' => $lastname,
         'firstname' => $firstname,
         'idRole' => $idRole

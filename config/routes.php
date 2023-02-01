@@ -37,6 +37,6 @@ $routes =
         'adminUserDelete' => 'AdminUserDeleteController:2',
 
         //user
-        'profil'=> "profilController : 2,1"
+        'profil'=> "profilController:2,1"
     ];
 
