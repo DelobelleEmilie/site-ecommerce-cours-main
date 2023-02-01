@@ -20,21 +20,23 @@ function password()
     if (!empty($_POST)) {
         ;
         $password = $_POST['password'] ?? null;
-        $passwordConfirm = $_POST['new_mot_passe'] ?? null ;
+        $passwordConfirm = $_POST['new_mot_passe'] ?? null;
 
         $form['values'] = [
             'new_mot_passe' => $passwordConfirm,
-    ];
+        ];
     }
-    if ($passwordConfirm === $passwordConfirm and $_POST["ancien_mot_passe"]  ==  $password   )
-    {
-        $form['state'] = 'sucess';
+    if ($passwordConfirm === $passwordConfirm and $_POST["ancien_mot_passe"] == $password) {
+        saveUser(saveUserpassword_hash($passwordConfirm, PASSWORD_DEFAULT));
+        $form['state'] = 'success';
+        $form['message'] = 'Vous avez change votre mot de base!';
     }
+
     else
     {
         $form['state'] = 'danger';
         $form['message'] = 'Les mots de passe ne correspondent pas ';
     }
-    header("Location: /");
+    header("Location: index.php");
     die();
 }
