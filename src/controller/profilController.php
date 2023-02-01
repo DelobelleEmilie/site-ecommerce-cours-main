@@ -40,3 +40,19 @@ function password()
     header("Location: index.php");
     die();
 }
+
+function update($db)
+{
+    if (!empty($_POST)) {
+        $lastname = $_POST['lastname'] ?? null;
+        $firstname = $_POST['firstname'] ?? null;
+
+        $form['values'] = [
+            'lastname' => $lastname,
+            'firstname' => $firstname,
+        ];
+        $db = $db->prepare("UPDATE users SET name=:name, lastname=:lastname WHERE id=:id");
+        $db->execute();
+
+    }
+}
