@@ -19,6 +19,8 @@
                 Ajouter
             </a>
         </div>
+{#        thead, c'est l'entete#}
+{#        et dans tbody, on boucle sur les produits pour dessiner les lignes#}
         <table class="table table-striped">
             <thead>
             <tr>
@@ -37,10 +39,12 @@
                     <td>{{ product.price }}</td>
                     <td>{{ product.category }}</td>
                     <td>
+{#                        url dynamique#}
                         <a
                                 class="btn btn-success"
                                 href="/?page=adminProductShow&product={{ product.id }}"
                         >
+{#                            ajouter une icon#}
                             <i class="fa-sharp fa-solid fa-eye"></i>
                         </a>
                         <a
