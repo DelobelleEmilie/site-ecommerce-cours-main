@@ -83,6 +83,12 @@
                         />
                     </div>
 
+                    <button class="btn btn-primary" disabled>
+                        <label for="desactiver" class="form-label">desactiver</label>
+                        <i class="bi bi-moon-stars-fill"></i>
+                    </button>
+
+{#                    retirer le champ role si on est en mode profile#}
                     {% if not profile %}
                         <div class="nb-3">
                             <label for="idRole" class="form-label">Role</label>
