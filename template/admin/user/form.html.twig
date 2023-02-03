@@ -127,6 +127,11 @@
                         Ajouter
                     {% else %}
                         Modifier
+                        <form action="updatePassword.php" method="post">
+                            <input type="password" name="password1">
+                            <input type="password" name="password2">
+                            <input type="submit" value="Modifier">
+                        </form>
                     {% endif %}
                 </button>
 

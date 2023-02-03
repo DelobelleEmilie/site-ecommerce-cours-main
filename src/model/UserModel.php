@@ -72,6 +72,17 @@ function getAllUsers($db)
 
 function setUserActive($db, $id, $active)
 {
+    if (isset($_POST['desactive']))
+    {
+
+        $db->execute('UPDATE shop_users set active = 1 where id=:id');
+
+    }
+    else
+    {
+        $db->execute('UPDATE shop_users set active = 0 where id=:id');
+    }
+
     $query = $db->prepare("UPDATE shop_users SET active=:active WHERE id=:id");
     $query->execute([
         'id' => $id,
