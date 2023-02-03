@@ -36,6 +36,9 @@ $routes =
         'adminUserAdd' => 'AdminUserAddController:2',
         'adminUserDelete' => 'AdminUserDeleteController:2',
 
+        //profil
+        'profil' => 'ProfilController:1,2', //formulaire modification de profil
+
 
     ];
 
