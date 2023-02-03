@@ -4,31 +4,126 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            Modifier>
-    </button>
+    <center>
+        <div class="card" style="width: 50rem;">
+            <div class=".border .rounded-pill">
+                <div class="card-body text-secondary">
+                    <div class="container d-flex h-100">
+                        <div class="h-100 align-items-center">
+                            <div class="mx-auto">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/The_Last_of_Us_Logo_2.png"
+                                             class="card-img-top" alt="" width=50% height=50%>
+                                        <h1>S'inscrire</h1>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Validation du changement</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="updatePassword.php" method="post">
-                        <div><input type="password" name="password1"></div>
-                        <div><input type="password" name="password2"></div>
+                                        {% if form.message is defined %}
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Valider</button>
+                                            <div class="alert alert-{{ form.state|default('info') }}">
+                                                {{ form.message }}
+                                            </div>
+
+                                        {% endif %}
+
+                                        <div class="inputs">
+                                            <form action="" method="POST">
+
+                                                <!--créer une interaction pour le  email et ajouter la donnée mail -->
+                                                <label>
+                                                    Adresse e-mail :
+                                                    <input
+                                                            type="email"
+                                                            placeholder="Email"
+                                                            name="email"
+                                                            value="{{ form.values.email }}"
+                                                    />
+                                                </label>
+
+                                                <br/>
+
+                                                <!--créer une interaction pour le password  et ajouter la donnée password -->
+                                                <label>
+                                                    Mot de passe :
+                                                    <input
+                                                            type="password"
+                                                            placeholder="5€CURIZ3D"
+                                                            name="password"
+                                                    />
+                                                </label>
+
+                                                <br/>
+
+                                                <label>
+                                                    Confirmer le mot de passe :
+                                                    <input
+                                                            type="password"
+                                                            placeholder="5€CURIZ3D"
+                                                            name="passwordConfirm"
+                                                    />
+                                                </label>
+
+                                                <br/>
+
+
+                                                <label>
+                                                    Nom :
+                                                    <input
+                                                            type="text"
+                                                            placeholder="Nom"
+                                                            name="lastname"
+                                                            value="{{ form.values.lastname }}"
+                                                    />
+                                                </label>
+
+                                                <br/>
+
+
+                                                <label>
+                                                    Prénom :
+                                                    <input
+                                                            type="text"
+                                                            placeholder="Prénom"
+                                                            name="firstname"
+                                                            value="{{ form.values.firstname }}"
+                                                    />
+                                                </label>
+
+                                                <br/>
+
+                                                <label>
+                                                    Numéro de téléphone :
+                                                    <input
+                                                            type="tel"
+                                                            placeholder="télephone"
+                                                            name="phone"
+                                                            value="{{ form.values.phone }}"
+                                                    />
+                                                </label>
+
+                                                <br/>
+
+                                                <label>
+                                                    Date de naissance :
+                                                    <input
+                                                            type="date"
+                                                            placeholder="date d'anniversaire"
+                                                            name="birthdate"
+                                                            value="{{ form.values.birthdate }}"
+                                                    />
+                                                </label>
+
+                                                <!--créer un bouton pour se connecter-->
+                                                <button type="submit" name="Submitted">S'inscrire</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </center>
 {% endblock %}
