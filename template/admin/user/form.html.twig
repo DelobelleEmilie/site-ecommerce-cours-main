@@ -119,8 +119,6 @@
                     Retourner à la liste
                 </a>
 
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa-sharp fa-solid fa-floppy-disk"></i>
                      
                     {# #vérifier la valeur de la variable controller. Selon la valeur de cette variable, une étiquette différente sera insérée dans le bouton. #}
                     {% if controller == 'add' %}
@@ -141,8 +139,28 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="updatePassword.php" method="post">
-                                            <div><input type="password" name="password1"></div>
-                                            <div><input type="password" name="password2"></div>
+                                            <div>
+                                                <label for="newpassword" class="form-label">Nouveau mot de passe</label>
+                                                <input
+                                                        type="password"
+                                                        placeholder="5€CURIZ3D"
+                                                        class="form-control"
+                                                        id="newpassword"
+                                                        name="newpassword"
+                                                        value="{{ form.newpassword }}"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label for="newpassword" class="form-label">Nouveau mot de passe</label>
+                                                <input
+                                                        type="password2"
+                                                        placeholder="5€CURIZ3D"
+                                                        class="form-control"
+                                                        id="newpassword"
+                                                        name="newpassword"
+                                                        value="{{ form.newpassword }}"
+                                                />
+                                            </div>
 
                                         </form>
                                     </div>
