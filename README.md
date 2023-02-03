@@ -1,5 +1,5 @@
 
-# <p align="center">SIte ecommerce cours </p>
+# <p align="center">Site ecommerce cours </p>
   
 
 ## 🛠️ Tech Stack
@@ -14,5 +14,5 @@
 ## 🙇 Author
 Emilie Delobelle
 ##
-[Documentation technique](https://docs.google.com/document/d/18FF7U-kNIVHd0kMevQ6YbHDqeW8q3v0z9hsH8QK-unI/edit?usp=sharing)
+
         
