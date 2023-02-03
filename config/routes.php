@@ -40,7 +40,7 @@ $routes =
         //profil
         'profil' => 'ProfilController:1,2', //formulaire modification de profil
 
-        'modal' =>'ModalController'
+
 
     ];
 
