@@ -32,6 +32,7 @@ function loginController($twig, $db)
             if ($user) {
 
                 if (password_verify($password, $user['password'])) {
+                    $_SESSION['auth']['id'] = $user['id'];
                     $_SESSION['auth']['login'] = $user['email'];
                     $_SESSION['auth']['role'] = $user['idRole'];
                     header("Location: /");
