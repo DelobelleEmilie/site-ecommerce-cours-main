@@ -83,10 +83,14 @@
                         />
                     </div>
 
-                    <button class="btn btn-primary" disabled>
-                        <label for="desactiver" class="form-label">desactiver</label>
-                        <i class="bi bi-moon-stars-fill"></i>
-                    </button>
+                    <div class="nb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="active" name="active" value="1" {% if form.active %} checked {% endif %}>
+                            <label class="form-check-label" for="active">
+                                Compte activé
+                            </label>
+                        </div>
+                    </div>
 
 {#                    retirer le champ role si on est en mode profile#}
                     {% if not profile %}
@@ -161,12 +165,11 @@
                                                         value="{{ form.newpassword }}"
                                                 />
                                             </div>
-
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Valider</button>
+                                            </div>
                                         </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Valider</button>
                                     </div>
                                 </div>
                             </div>

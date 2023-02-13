@@ -13,7 +13,8 @@ function AdminUserAddController($twig, $db)
         'email' => '',
         'firstname' => '',
         'lastname' => '',
-        'idRole' => ''
+        'idRole' => '',
+        'active' => true
     ];
 
     if (!empty($_POST))
@@ -22,12 +23,14 @@ function AdminUserAddController($twig, $db)
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         $idRole = htmlspecialchars($_POST['idRole']);
+        $active = htmlspecialchars($_POST['active']) === "1";
 
         $form = [
             'email' => $email,
             'firstname' => $firstname,
             'lastname' => $lastname,
-            'idRole' => $idRole
+            'idRole' => $idRole,
+            'active' => $active
         ];
 
         if (!isset($email) || strlen($email) < 3
@@ -40,7 +43,7 @@ function AdminUserAddController($twig, $db)
             $message = 'Vous devez renseigner tous les champs.';
         }
         else {
-            saveUser($db, $email, '', $lastname, $firstname, $idRole);
+            saveUser($db, $email, '', $lastname, $firstname, $idRole, $active);
 
             header('location: /?page=adminUserList');
             die();

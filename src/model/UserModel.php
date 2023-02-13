@@ -23,7 +23,7 @@ function getOneUser($db, $id)
     return $query->fetch();
 }
 
-function saveUser($db, $email, $password, $lastname, $firstname, $idRole)
+function saveUser($db, $email, $password, $lastname, $firstname, $idRole, $active)
 {
     // Récupération des données de l'utilisateur à partir du formulaire
     // Requête SQL pour insérer les données de l'utilisateur dans la base de données
@@ -39,7 +39,7 @@ function saveUser($db, $email, $password, $lastname, $firstname, $idRole)
     ]);
 }
 
-function updateUser($db, $id, $email, $lastname, $firstname, $idRole)
+function updateUser($db, $id, $email, $lastname, $firstname, $idRole, $active)
 {
     $query = $db->prepare("UPDATE shop_users SET email=:email, lastname=:lastname, firstname=:firstname, idRole=:idRole WHERE id=:id");
     $query->execute([

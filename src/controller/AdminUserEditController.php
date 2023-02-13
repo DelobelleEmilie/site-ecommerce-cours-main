@@ -16,7 +16,8 @@ function AdminUserEditController($twig, $db)
         'email' => $user['email'],
         'firstname' => $user['firstname'],
         'lastname' => $user['lastname'],
-        'idRole' =>$user['idRole']
+        'idRole' => $user['idRole'],
+        'active' => $user['active'] === 1
     ];
 
     if (!empty($_POST))
@@ -25,12 +26,14 @@ function AdminUserEditController($twig, $db)
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         $idRole = htmlspecialchars($_POST['idRole']);
+        $active = htmlspecialchars($_POST['active']) === "1";
 
         $form = [
             'email' => $email,
             'firstname' => $firstname,
             'lastname' => $lastname,
-            'idRole' => $idRole
+            'idRole' => $idRole,
+            'active' => $active
         ];
 
         if (!isset($email) || strlen($email) < 3
@@ -43,7 +46,7 @@ function AdminUserEditController($twig, $db)
             $message = 'Vous devez renseigner tous les champs.';
         }
         else {
-            updateUser($db, $id, $email, $lastname, $firstname, $idRole);
+            updateUser($db, $id, $email, $lastname, $firstname, $idRole, $active);
 
             header('location: /?page=adminUserList');
             die();
