@@ -11,9 +11,10 @@ function upload($file): string | null
     $file_path = null;
 
     $file_name = null;
-    if (isset($_FILES["productImage"])) {
-        if (!empty($_FILES["productImage"]['name'])) {
-            $file_upload = explode(".", $_FILES["productImage"]['name']);
+
+    if (isset($file)) {
+        if (!empty($file['name'])) {
+            $file_upload = explode(".", $file['name']);
             // Vérification de l'extension
             # permet de vérifier la présence d’une valeur dans un tableau.
             if (in_array($file_upload[count($file_upload) - 1],
@@ -34,7 +35,7 @@ function upload($file): string | null
                 if (!file_exists($file_path)) {
                     // Déplacement du fichier
 # l’autorisation est effectuée en passant l’état de la variable «uploads» à vrai
-                    move_uploaded_file($_FILES['productImage']['tmp_name'], $file_path);
+                    move_uploaded_file($file['tmp_name'], $file_path);
                     $uploads['state'] = true;
                 } else {
                     $msg = "Une image avec ce nom existe déjà !";

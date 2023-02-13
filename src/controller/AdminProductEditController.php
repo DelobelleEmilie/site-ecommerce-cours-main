@@ -3,6 +3,7 @@
 include_once '../src/model/ProductModel.php';
 include_once '../src/model/CategoryModel.php';
 include_once '../src/service/upload.php';
+
 function AdminProductEditController($twig, $db)
 {
     $id = $_GET['product'] ?? null;
