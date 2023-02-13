@@ -20,133 +20,130 @@
             {% if profile %}
                 <h4>Gestion du profil</h4>
             {% endif %}
-            <form action="" method="POST" enctype="multipart/form-data">
-                <div class="m-3">
+            {% if controller == 'edit' %}
+            <ul class="nav nav-tabs" id="form-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if activeTab == 'main' %} active {% endif %}" id="main-tab" data-bs-toggle="tab" data-bs-target="#main-tab-pane" type="button" role="tab" aria-controls="main-tab-pane" aria-selected="true">Général</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link {% if activeTab == 'password' %} active {% endif %}" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-tab-pane" type="button" role="tab" aria-controls="password-tab-pane" aria-selected="false">Mot de passe</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="form-tab-content">
+                <div class="tab-pane fade {% if activeTab == 'main' %} show active {% endif %}" id="main-tab-pane" role="tabpanel" aria-labelledby="main-tab" tabindex="0">
 
+            {% endif %}
+                    <form action="" method="POST" enctype="multipart/form-data">
 
+                            <div class="m-3">
+                                <label for="firstname" class="form-label">Prénom</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="firstname"
+                                    name="firstname"
+                                    value="{{ form.firstname }}"
+                                />
+                            </div>
 
-                    <div class="nb-3">
-                        <label for="firstname" class="form-label">Prénom</label>
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="firstname"
-                                name="firstname"
-                                value="{{ form.firstname }}"
-                        />
-                    </div>
+                        <div class="m-3">
+                                <label for="lastname" class="form-label">Nom</label>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="lastname"
+                                        name="lastname"
+                                        value="{{ form.lastname }}"
+                                />
+                            </div>
 
-                    <div class="nb-3">
-                        <label for="lastname" class="form-label">Nom</label>
-                        <input
-                                type="text"
-                                class="form-control"
-                                id="lastname"
-                                name="lastname"
-                                value="{{ form.lastname }}"
-                        />
-                    </div>
-
-
-                    <div class="nb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="active" name="active" value="1" {% if form.active %} checked {% endif %}>
-                            <label class="form-check-label" for="active">
-                                Compte activé
-                            </label>
+                        <div class="m-3">
+                            <label for="email" class="form-label">Adresse e-mail</label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="email"
+                                    name="email"
+                                    value="{{ form.email }}"
+                            />
                         </div>
-                    </div>
 
-{#                    retirer le champ role si on est en mode profile#}
-                    {% if not profile %}
-                        <div class="nb-3">
-                            <label for="idRole" class="form-label">Role</label>
-                            <select
-                                    class="form-select"
-                                    name="idRole"
-                                    id="idRole"
-                            >
-                                {% for role in roles %}
-                                    <option
-                                            value="{{ role.id }}"
-                                            {% if role.id == form.idRole %} selected {% endif %}
-                                    >
-                                        {{ role.label }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% endif %}
-                </div>
 
-                <a
-                        href="/?page=adminProductList"
-                        class="btn btn-secondary"
-                >
-                    <i class="fa-sharp fa-solid fa-arrow-left-long"></i>
-                     
-                    Retourner à la liste
-                </a>
-
-                     
-                    {# #vérifier la valeur de la variable controller. Selon la valeur de cette variable, une étiquette différente sera insérée dans le bouton. #}
-                    {% if controller == 'add' %}
-                        Ajouter
-                    {% else %}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Modifier
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Validation du changement</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="updatePassword.php" method="post">
-                                            <div>
-                                                <label for="newpassword" class="form-label">Nouveau mot de passe</label>
-                                                <input
-                                                        type="password"
-                                                        placeholder="5€CURIZ3D"
-                                                        class="form-control"
-                                                        id="newpassword"
-                                                        name="newpassword"
-                                                        value="{{ form.newpassword }}"
-                                                />
-                                            </div>
-                                            <div>
-                                                <label for="newpassword" class="form-label">Nouveau mot de passe</label>
-                                                <input
-                                                        type="password2"
-                                                        placeholder="5€CURIZ3D"
-                                                        class="form-control"
-                                                        id="newpassword"
-                                                        name="newpassword"
-                                                        value="{{ form.newpassword }}"
-                                                />
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Valider</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                        <div class="m-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="active" name="active" value="1" {% if form.active %} checked {% endif %}>
+                                    <label class="form-check-label" for="active">
+                                        Compte activé
+                                    </label>
                                 </div>
                             </div>
+
+                        <div class="m-3">
+                                <label for="idRole" class="form-label">Role</label>
+                                <select
+                                        class="form-select"
+                                        name="idRole"
+                                        id="idRole"
+                                >
+                                    {% for role in roles %}
+                                        <option
+                                                value="{{ role.id }}"
+                                                {% if role.id == form.idRole %} selected {% endif %}
+                                        >
+                                            {{ role.label }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% if controller == 'edit' %}
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-sharp fa-solid fa-floppy-disk"></i>
+                             
+                            Modifier
+                        </button>
+                    </form>
+                </div>
+                <div class="tab-pane fade {% if activeTab == 'password' %} show active {% endif %}" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabindex="1">
+                    <form action="" method="POST">
+                        {% endif %}
+                        <div class="m-3">
+                            <label for="new-password" class="form-label">
+                                {% if controller == 'add' %} Mot de passe {% else %} Nouveau mot de passe {% endif %}
+                            </label>
+                            <input
+                                    type="password"
+                                    placeholder="5€CURIZ3D"
+                                    class="form-control"
+                                    id="new-password"
+                                    name="new-password"
+                            />
                         </div>
-
-                    {% endif %}
-                </button>
-
-
-            </form>
+                        <div class="m-3">
+                            <label for="confirm-password" class="form-label">
+                                {% if controller == 'add' %} Confirmez le mot de passe {% else %} Confirmez le nouveau mot de passe {% endif %}
+                            </label>
+                            <input
+                                    type="password"
+                                    placeholder="5€CURIZ3D"
+                                    class="form-control"
+                                    id="confirm-password"
+                                    name="confirm-password"
+                            />
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-sharp fa-solid fa-floppy-disk"></i>
+                             
+                            {#            #vérifier la valeur de la variable controller. Selon la valeur de cette variable, une étiquette différente sera insérée dans le bouton. #}
+                            {% if controller == 'add' %}
+                                Ajouter
+                            {% else %}
+                                Modifier
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
 
 

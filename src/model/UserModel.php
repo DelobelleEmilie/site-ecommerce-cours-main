@@ -49,18 +49,27 @@ function updateUser($db, $id, $email, $lastname, $firstname, $idRole, $active)
         'firstname' => $firstname,
         'idRole' => $idRole
     ]);
+
+    return $query->rowCount() > 0;
+}
+
+function updateUserPassword($db, $id, $password) {
+
+    $query = $db->prepare("UPDATE shop_users SET password=:password WHERE id=:id");
+    $query->execute([
+        'id' => $id,
+        'password' => password_hash($password, PASSWORD_DEFAULT)
+    ]);
+
+    return $query->rowCount() > 0;
 }
 
 function deleteUser($db, $id)
 {
     $query = $db->prepare("DELETE FROM shop_users WHERE id=:id");
     $query->execute(['id' => $id]);
-    if ($query->rowCount() > 0) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-    return $result;
+
+    return $query->rowCount() > 0;
 }
 
 function getAllUsers($db)
@@ -79,11 +88,5 @@ function setUserActive($db, $id, $active)
         'active' => $active ? 1 : 0
     ]);
 
-    if ($query->rowCount() == 1) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-
-    return $result;
+    return $query->rowCount() > 0;
 }

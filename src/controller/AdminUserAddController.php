@@ -19,11 +19,11 @@ function AdminUserAddController($twig, $db)
 
     if (!empty($_POST))
     {
-        $email = htmlspecialchars($_POST['email']);
+        $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : null;
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         $idRole = htmlspecialchars($_POST['idRole']);
-        $active = htmlspecialchars($_POST['active']) === "1";
+        $active = isset($_POST['active']) ? htmlspecialchars($_POST['active']) === "1" : null;
 
         $form = [
             'email' => $email,

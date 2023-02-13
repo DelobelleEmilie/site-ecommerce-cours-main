@@ -27,7 +27,8 @@ function loginController($twig, $db)
 
         if (isset($email) && strlen($email) > 0 && isset($password)) {
 
-            $user = getOneUserCredentials($db, $email)[0];
+            $users = getOneUserCredentials($db, $email);
+            $user = count($users) > 0 ? $users[0] : null;
 
             if ($user) {
 
