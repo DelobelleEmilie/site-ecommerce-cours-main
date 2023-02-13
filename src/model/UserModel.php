@@ -43,13 +43,26 @@ function saveUser($db, $email, $password, $lastname, $firstname, $idRole, $activ
 
 function updateUser($db, $id, $email, $lastname, $firstname, $idRole, $active)
 {
-    $query = $db->prepare("UPDATE shop_users SET email=:email, lastname=:lastname, firstname=:firstname, idRole=:idRole WHERE id=:id");
+    $query = $db->prepare("UPDATE shop_users SET email=:email, lastname=:lastname, firstname=:firstname, idRole=:idRole, active=:active WHERE id=:id");
     $query->execute([
         'id' => $id,
         'email' => $email,
         'lastname' => $lastname,
         'firstname' => $firstname,
-        'idRole' => $idRole
+        'idRole' => $idRole,
+        'active' => $active ? 1 : 0
+    ]);
+
+    return $query->rowCount() > 0;
+}
+
+function updateUserProfile($db, $id, $email, $lastname, $firstname) {
+    $query = $db->prepare("UPDATE shop_users SET email=:email, lastname=:lastname, firstname=:firstname WHERE id=:id");
+    $query->execute([
+        'id' => $id,
+        'email' => $email,
+        'lastname' => $lastname,
+        'firstname' => $firstname
     ]);
 
     return $query->rowCount() > 0;
@@ -61,6 +74,28 @@ function updateUserPassword($db, $id, $password) {
     $query->execute([
         'id' => $id,
         'password' => password_hash($password, PASSWORD_DEFAULT)
+    ]);
+
+    return $query->rowCount() > 0;
+}
+
+function updateUserPasswordProfile($db, $id, $oldpassword, $newpassword) {
+
+    $query = $db->prepare("SELECT password FROM shop_users WHERE id = :id");
+    $query->execute([
+        'id' => $id
+    ]);
+
+    $savedpassword = $query->fetch()['password'];
+
+    if (!password_verify($oldpassword, $savedpassword)) {
+        return false;
+    }
+
+    $query = $db->prepare("UPDATE shop_users SET password=:password WHERE id=:id");
+    $query->execute([
+        'id' => $id,
+        'password' => password_hash($newpassword, PASSWORD_DEFAULT)
     ]);
 
     return $query->rowCount() > 0;

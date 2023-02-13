@@ -39,6 +39,7 @@ $routes =
         'adminUserToggleActive' => 'AdminUserToggleActiveController:2',
 
         //profil
-        'profil' => 'ProfilController:1,2', //formulaire modification de profil
+        'profile' => 'ProfileController:1,2', //formulaire modification de profil
+        'inactiveUser' => 'InactiveUserController:1,2', //formulaire modification de profil
     ];
 
