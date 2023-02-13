@@ -23,6 +23,7 @@ function AdminUserAddController($twig, $db)
         $firstname = htmlspecialchars($_POST['firstname']);
         $lastname = htmlspecialchars($_POST['lastname']);
         $idRole = htmlspecialchars($_POST['idRole']);
+//        pour lire depuis le formulaire
         $active = isset($_POST['active']) ? htmlspecialchars($_POST['active']) === "1" : null;
         $newpassword = isset($_POST['new-password']) ? htmlspecialchars($_POST['new-password']) : null;
         $confirmpassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : null;

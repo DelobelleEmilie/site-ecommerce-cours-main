@@ -36,6 +36,7 @@ function saveUser($db, $email, $password, $lastname, $firstname, $idRole, $activ
         'lastname' => $lastname,
         'firstname' => $firstname,
         'idRole' => $idRole,
+//        Conversion boolean vers tinyint
         'active' => $active ? 1 : 0
     ]);
 }
