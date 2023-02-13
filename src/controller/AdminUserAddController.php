@@ -24,6 +24,8 @@ function AdminUserAddController($twig, $db)
         $lastname = htmlspecialchars($_POST['lastname']);
         $idRole = htmlspecialchars($_POST['idRole']);
         $active = isset($_POST['active']) ? htmlspecialchars($_POST['active']) === "1" : null;
+        $newpassword = isset($_POST['new-password']) ? htmlspecialchars($_POST['new-password']) : null;
+        $confirmpassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : null;
 
         $form = [
             'email' => $email,
@@ -37,13 +39,16 @@ function AdminUserAddController($twig, $db)
             || !isset($firstname) || strlen($firstname) < 3
             || !isset($lastname)  || strlen($lastname) < 3
             || !isset($idRole)
+            || !isset($newpassword) || strlen($newpassword) < 3
+            || !isset($confirmpassword) || strlen($confirmpassword) < 3
+            || $newpassword !== $confirmpassword
         )
         {
             $status = 'danger';
             $message = 'Vous devez renseigner tous les champs.';
         }
         else {
-            saveUser($db, $email, '', $lastname, $firstname, $idRole, $active);
+            saveUser($db, $email, $newpassword, $lastname, $firstname, $idRole, $active);
 
             header('location: /?page=adminUserList');
             die();

@@ -28,14 +28,15 @@ function saveUser($db, $email, $password, $lastname, $firstname, $idRole, $activ
     // Récupération des données de l'utilisateur à partir du formulaire
     // Requête SQL pour insérer les données de l'utilisateur dans la base de données
     $query = $db->prepare(
-        "INSERT INTO shop_users (email, password, lastname, firstname, idRole) VALUES (:email, :password, :lastname, :firstname, :idRole)"
+        "INSERT INTO shop_users (email, password, lastname, firstname, idRole, active) VALUES (:email, :password, :lastname, :firstname, :idRole, :active)"
     );
     $query->execute([
         'email' => $email,
         'password' => password_hash($password, PASSWORD_DEFAULT),
         'lastname' => $lastname,
         'firstname' => $firstname,
-        'idRole' => $idRole
+        'idRole' => $idRole,
+        'active' => $active ? 1 : 0
     ]);
 }
 
