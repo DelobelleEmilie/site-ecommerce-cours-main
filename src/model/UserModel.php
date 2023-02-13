@@ -4,7 +4,7 @@ function getOneUserCredentials($db, $email)
 {
     // Recupère les utilisateurs de la base de données d'après l'adresse email
     $query = $db->prepare(
-        "SELECT id,email,password,idRole FROM shop_users WHERE email = :email"
+        "SELECT id,email,password,idRole FROM shop_users WHERE email = :email AND active = 1"
     );
     $query->execute([
         'email' => $email
@@ -15,7 +15,7 @@ function getOneUserCredentials($db, $email)
 function getOneUser($db, $id)
 {
     $query = $db->prepare(
-        "SELECT id, email, firstname, lastname, idRole FROM shop_users WHERE id = :id"
+        "SELECT id, email, firstname, lastname, idRole, active FROM shop_users WHERE id = :id"
     );
     $query->execute([
         'id' => $id
@@ -65,33 +65,25 @@ function deleteUser($db, $id)
 
 function getAllUsers($db)
 {
-    $query = $db->prepare("SELECT id, email, firstname, lastname, idRole FROM shop_users");
+    $query = $db->prepare("SELECT id, email, firstname, lastname, idRole, active FROM shop_users");
     $query->execute();
     return $query->fetchAll();
 }
 
 function setUserActive($db, $id, $active)
 {
-    if (isset($_POST['desactive']))
-    {
+    $query = $db->prepare("UPDATE shop_users SET active = :active WHERE id = :id");
 
-        $db->execute('UPDATE shop_users set active = 1 where id=:id');
-
-    }
-    else
-    {
-        $db->execute('UPDATE shop_users set active = 0 where id=:id');
-    }
-
-    $query = $db->prepare("UPDATE shop_users SET active=:active WHERE id=:id");
     $query->execute([
         'id' => $id,
         'active' => $active ? 1 : 0
     ]);
+
     if ($query->rowCount() == 1) {
         $result = true;
     } else {
         $result = false;
     }
+
     return $result;
 }
