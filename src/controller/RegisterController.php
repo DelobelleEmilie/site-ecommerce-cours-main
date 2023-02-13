@@ -44,7 +44,7 @@ function registerController($twig, $db)
         if (isset($email) && strlen($email) > 0 && isset($firstname) && isset($lastname)) {
             if (count(getOneUserCredentials($db, $email)) === 0) {
                 if ($password === $passwordConfirm) {
-                    saveUser($db, $email, $password, $lastname, $firstname, 1);
+                    saveUser($db, $email, $password, $lastname, $firstname, 1, true);
                     $form['state'] = 'success';
                     $form['message'] = 'Vous êtes maintenant inscrit au site !';
 
