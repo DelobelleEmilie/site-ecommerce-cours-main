@@ -109,6 +109,17 @@
                                     <div class="modal-body">
                                         <form action="updatePassword.php" method="post">
                                             <div>
+                                                <label for="ancienpassword" class="form-label">Ancien mot de passe</label>
+                                                <input
+                                                        type="password"
+                                                        placeholder="5€CURIZ3D"
+                                                        class="form-control"
+                                                        id="ancienpassword"
+                                                        name="ancienpassword"
+                                                        value="{{ form.ancienpassword }}"
+                                                />
+                                            </div>
+                                            <div>
                                                 <label for="newpassword" class="form-label">Nouveau mot de passe</label>
                                                 <input
                                                         type="password"
